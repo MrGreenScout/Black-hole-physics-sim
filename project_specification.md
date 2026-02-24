@@ -20,14 +20,16 @@ Grade aim: A
   like a force, it is instead a part of the geometry of space-time. Gravity does not effect photons, it effects the space the photons travel
   through, warping it.
 
-  Light reads/watches:
-  - [Einstein-online](https://www.einstein-online.info/en/spotlight/)
-  - [Simulating Black Holes in C++](https://www.youtube.com/watch?v=8-B6ryuBkCM)
+  Inspiration for the project: [Simulating Black Holes in C++](https://www.youtube.com/watch?v=8-B6ryuBkCM)
+  
+  Interesting reads:
+    - [Einstein-online](https://www.einstein-online.info/en/spotlight/)
 
 ## Background
   There are many physics and maths concepts neeeded to model an accurate black hole visualization.
 
   Key concepts:
+  - (Parts of) general theory of relativity
   - Schwartzchild metric
   - Geodesic equation (in the context of general relativity)
   - Weak Field Limit
@@ -35,9 +37,8 @@ Grade aim: A
 ## 2. Implementation specifics (as many as possible)
 Technologies, physics problem, constraints
 
-  Overview
-
-  The project will be made using the unity game engine. First a 2D version will be made to keep the scope of the project down, then 
+  The project will be made using the unity game engine. First a 2D version will be made to keep the scope of the project down, then if
+  there's time for it, it may be expanded to 3D. S 
   
   The Black hole representation
   - Defining the Schwarzschild Radius
