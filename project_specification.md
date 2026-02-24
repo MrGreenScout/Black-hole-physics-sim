@@ -6,7 +6,7 @@ Grade aim: A
 ## 1. Some background to the area/problem
 
 ### Introduction
-  Black holes are a type of exotic celestial object, with the key feature being their extreme mass, so massive not even light can escape. 
+  Black holes are a type of exotic celestial object, with the key feature being their extreme mass, so massive not even light can escape its pull. 
   This makes for a very interesting subject, since as we know, light has no mass, so how does something massive "bend" the path of the light? 
   Quite literally of course, bending space itself.
   
