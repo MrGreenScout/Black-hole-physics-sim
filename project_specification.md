@@ -20,6 +20,10 @@ Grade aim: A
   like a force, it is instead a part of the geometry of space-time. Gravity does not effect photons, it effects the space the photons travel
   through, warping it.
 
+  Light reads/watches:
+  - [Einstein-online](https://www.einstein-online.info/en/spotlight/)
+  - [Simulating Black Holes in C++](https://www.youtube.com/watch?v=8-B6ryuBkCM)
+
 ## Background
   There are many physics and maths concepts neeeded to model an accurate black hole visualization.
 
@@ -43,6 +47,7 @@ Technologies, physics problem, constraints
 ## 3. Specifics of what the final system will look like
 and do (include sketches if you like)
 ## 4. References (2-3)
+
 ## 5. Potential risks/challenges (And how they might be avoided/minimized)
 
 
