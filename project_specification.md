@@ -29,9 +29,10 @@ Grade aim: A
   There are many physics and maths concepts neeeded to model an accurate black hole visualization.
 
   Key concepts:
+  - Numeric methods (Euler central difference, RK4)
   - (Parts of) general theory of relativity
-  - Schwartzchild metric
   - Geodesic equation (in the context of general relativity)
+  - Schwartzchild metric
   - Weak Field Limit
 
 ## 2. Implementation specifics (as many as possible)
