@@ -10,7 +10,10 @@ Grade aim: A
   This makes for a very interesting subject, since as we know, light has no mass, so how does something massive "bend" the path of the light? 
   Quite literally of course, bending space itself.
   
-  The aim of this project is to visualize this bending of space-time close to a Schwarzschild black hole.
+  The aim of this project is to visualize this bending of space-time close to a Schwarzschild black hole. This will be controlled by modeling a 
+  known phenomena that could be described as a looping mirror effect describe in [1]. Sending a photon from us, the observer, from a 
+  specific point in a specfic direction will yield a path that loops once around the black hole returning to us, the observer.
+  
 
   Since the warping of space-time is not something we usually think about in everyday life it can be quite difficult to understand.
   And due to this when we start to learn about a foreign subject like this we want to draw parallells to those things we know. This causes many
@@ -65,6 +68,8 @@ holes.
 (Simulating Black Holes in C++ by kavan)
 
 ## 4. References (2-3)
+[1] F. Bacchini, B. Ripperda, A. Y. Chen, and L. Sironi, “Generalized, Energy-conserving Numerical Simulations of Particles in General Relativity. I. Time-like and Null Geodesics,” The Astrophysical Journal Supplement Series, vol. 237, no. 1, p. 6, Jul. 2018, doi: 10.3847/1538-4365/aac9ca.
+
 
 ## 5. Potential risks/challenges (And how they might be avoided/minimized)
 
