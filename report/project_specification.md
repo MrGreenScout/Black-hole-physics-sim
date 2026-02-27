@@ -32,7 +32,7 @@ Grade aim: A
   There are many physics and maths concepts neeeded to model an accurate black hole visualization.
 
   #### Key concepts:
-  - Numeric methods (Euler central difference, RK4)
+  - Numeric methods (Forward Euler, RK4)
   - (Parts of) general theory of relativity
   - Geodesic equation (in the context of general relativity)
   - Schwartzchild metric
@@ -50,8 +50,7 @@ Technologies, physics problem, constraints
   - Defining the Schwarzschild Radius, as simple as defining the black hole with a certain mass.
   
   Tracing the path of photons (through warped space-time)
-  - Solving geodesics equations (Einstein's equations) using numeric methods such as Euler central difference (or forward euler maybe) and
-    Runge-Kutta-4 for more accurate results, in the context of the Schwartzchild metric.
+  - Solving geodesics equations (Einstein's equations) using the numeric method Runge-Kutta-4 for accurate results, in the context of the Schwartzchild metric.
 
 ## 3. Specifics of what the final system will look like
 and do (include sketches if you like)
