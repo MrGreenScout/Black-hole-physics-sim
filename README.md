@@ -5,4 +5,4 @@
 
 This is the final project for the course DD1354 Models and Simulation. This project will model a blackhole and how it bends space time altering the path of photons.
 
-[Project specification](./project_specification.md)
+[Project specification](./report/project_specification.md)
