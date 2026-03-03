@@ -69,6 +69,8 @@ holes.
 ## 4. References (2-3)
 [1] F. Bacchini, B. Ripperda, A. Y. Chen, and L. Sironi, “Generalized, Energy-conserving Numerical Simulations of Particles in General Relativity. I. Time-like and Null Geodesics,” The Astrophysical Journal Supplement Series, vol. 237, no. 1, p. 6, Jul. 2018, doi: 10.3847/1538-4365/aac9ca.
 
+[2] J.-P. Luminet, “Image of a spherical black hole with thin accretion disk.,” \aap, vol. 75, pp. 228–235, May 1979.
+
 
 ## 5. Potential risks/challenges (And how they might be avoided/minimized)
 
