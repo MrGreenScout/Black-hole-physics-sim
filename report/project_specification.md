@@ -165,7 +165,9 @@ By analysing the geometric of the Schwartzfield metric we find two conserved qua
 
 This gives rise to a parameter $b=\frac{L}{E}$, the impact parameter. Geometrically this is the perpendicular distance to the black hole from the photons asymptotic trajectory. $b=\frac{r^2}{(1-\frac{r_s}{r})}\frac{d\varphi}{dt}$
 
-![Geometric explanation of b](/report/img/Grav-lensing.png)
+![Geometric explanation of b](/report/img/Trajectory-of-photons-impact-paramter-deflection-angle.png)
+
+Figure: Trajectory of photons, impact parameter and deflection angle [2].
 
 Switching to [natural units](https://en.wikipedia.org/wiki/Natural_units) (c = 1 and G = 1). Thus:
 * $r_s=2M$
@@ -193,7 +195,7 @@ $\frac{d\varphi}{ds}=\frac{L}{r^2}$
 
 $\frac{dr}{ds} = \plusmn\sqrt{E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}}$
 
-where the sign of $\frac{dr}{ds}$ is determined by if the photon is radially in- or outfalling, where and outfalling photon has a positive change and an infalling photon has a negative change [2].
+where the sign of $\frac{dr}{ds}$ is determined by if the photon is radially in- or outfalling, where and outfalling photon has a positive change and an infalling photon has a negative change [3].
 
 #### Applied RK4
 
@@ -210,13 +212,26 @@ $f(s,\vec{y})=\frac{d\vec{y}}{ds}=\begin{pmatrix}
     \plusmn\sqrt{E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}}
 \end{pmatrix}$
 
-for an initial value $\vec{y}_0$ at $s_0=0$ with step size $h$
+Initial parameters are $\vec{y}(0) = \vec{y}_0$ and $\frac{d\vec{y}}{ds}|_{s=0, \vec{y}=y_0}=\dot{y}_0=\begin{pmatrix}
+  \dot{r}_0 \\
+  \dot{\varphi}_0
+\end{pmatrix}$
+This gives the constants:
 
-$\vec{y}_1=$
+$L=r_0^2\dot{\varphi}_0$ and
+
+$E=\sqrt{\dot{r}_0^2+(1-\frac{r_s}{r})(\frac{L}{\dot{r}_0})^2}$ (No ± since the energy is positive)
+
+Since $s$ is only implied $f$ is a function of $\vec{y}$
+
+RK4 loops:
+
+
+
 
 ### Previous research
 
-One of the earliest 
+One of the earliest uses for modelling black holes is the 
 
 ## 2. Implementation specifics (as many as possible)
 Technologies, physics problem, constraints
@@ -249,19 +264,16 @@ holes.
 ## 4. References (2-3)
 [1] F. Bacchini, B. Ripperda, A. Y. Chen, and L. Sironi, “Generalized, Energy-conserving Numerical Simulations of Particles in General Relativity. I. Time-like and Null Geodesics,” The Astrophysical Journal Supplement Series, vol. 237, no. 1, p. 6, Jul. 2018, doi: 10.3847/1538-4365/aac9ca.
 
-[2] Y. Ali-Haïmoud, General Relativity Lectures 2019. Lectures 19-20. https://cosmo.nyu.edu/yacine/teaching/GR_2019/lectures/ (Retrieved 4 mars 2026)
+[2] J.-P. Luminet, “Image of a spherical black hole with thin accretion disk.,” \aap, vol. 75, pp. 228–235, May 1979.
 
-[3] J.-P. Luminet, “Image of a spherical black hole with thin accretion disk.,” \aap, vol. 75, pp. 228–235, May 1979.
-
+[3] Y. Ali-Haïmoud, General Relativity Lectures 2019. Lectures 19-20. https://cosmo.nyu.edu/yacine/teaching/GR_2019/lectures/ (Retrieved 4 mars 2026)
 
 ## 5. Potential risks/challenges (And how they might be avoided/minimized)
 
   Risks: 
-  - Scope creep
-    Minimized by clearly defined project boundaries and the acceptance of not everything needs to be modeled, some things can just be mentioned
-  - Ideas that are impossible to implement (though seem possible at the idea stage)
-    Rapid and continuous iterative prototyping for the project, testing ideas for feasablity. 
-  - 
+  - Scope creep. Minimized by clearly defined project boundaries and the acceptance of not everything needs to be modeled, some things can just be mentioned
+  - Ideas that are impossible to implement (though seem possible at the idea stage). Solved by rapid and continuous iterative prototyping for the project, testing ideas for feasablity.
+
 
 ## 6. Degree of simulation
 To what degree will the simulation use existing physics
