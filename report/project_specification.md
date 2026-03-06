@@ -56,15 +56,9 @@ Figure: SXS black hole merger [5]
 
 ### Background
 
-  There are many physics and maths concepts neeeded to model an accurate (but simplified) black hole visualization.
-
-  #### Key concepts:
-  - Numeric methods (RK4)
-  - (Parts of) general theory of relativity
-  - Geodesic equation (in the context of general relativity)
-  - Schwartzchild metric
-
-  The main physics problem this project aims to model a photons movement close to a static black hole. This is describe by solving a geodesic equation.
+  There are many physics and maths concepts neeeded to model an accurate (but simplified) black hole simulation. The main physics problem this project aims to model is a photons movement close to a static black hole which requires solving a geodesic equation in the Schwartzchild metric. 
+  
+  The key concepts needed to build a black hole simulation are a numeric way of solving differential equations, parts of Einstein's general theory of relativity (including but not limited to geodesics equations) and the Schwartzchild metric.
 
   #### [Runge-Kutta 4](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)
   A prerequisite for programmatically bendning light due to gravity is a numerical method that can be used to predict future position depending on current position and velocity. The method used in this project is the explicit Runge-Kutta 4 method, a fourth-order method that solves an equation of the form $\frac{dy}{dt}=f(t,y)$, $y(t_0)=y_0$ where $y$ is an unknown vector-valued function of a independet variable $t$.
@@ -93,7 +87,7 @@ Figure: SXS black hole merger [5]
   The geometry of spacetime is 4 dimensional, denoted as 3+1 spacetime when there exists 3 spatial dimensions and 1 dimension of time. Therefore, the geodesics equation for spacetime explains the shortest distance between two "points" in time and space, more often called "events".
 
   #### The Schwartzchild metric
-  In the case of the Schwartzchild metric, the geodesics equation is simplified by functionally removing all mass from the universe, and only modelling the external gravitational field of an uncharged, static, spherically symmetric body with a mass M, which may be a Schwartzchild black hole. The approximation is accurate enough for objects with small masses, or massless objects (such as photons).
+  In the case of the Schwartzchild metric, the geodesics equation is simplified by functionally removing all mass from the universe, and only modelling the external gravitational field of an uncharged, static, spherically symmetric body with a mass M, in our case a Schwartzchild black hole. The approximation is accurate enough for objects with small masses, or massless objects (such as photons).
 
   The Schwartzchild solution can be written as 
   
