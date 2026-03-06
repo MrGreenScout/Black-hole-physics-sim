@@ -28,63 +28,35 @@ Grade aim: A
   Interesting reads:
     - [Einstein-online](https://www.einstein-online.info/en/spotlight/)
 
-### Background
-  There are many physics and maths concepts neeeded to model an accurate black hole visualization.
+### Previous research
 
-  #### Key concepts:
-  - Numeric methods (RK4)
-  - (Parts of) general theory of relativity
-  - Geodesic equation (in the context of general relativity)
-  - Schwartzchild metric
+#### The first image of a simulated black hole
 
-  The main physics problem this project aims to model a photons movement close to a static black hole. This is describe by solving a geodesic equation.
+The first image of a (simulated) black hole was created by Jean-Pierre Luminet in 1979 which was produced using simulations run on a punch-card computer and a hand-plotted ink drawing. The illustration showed the shadow of the black hole, the luminous accretion disk and a visibly brighter side. The image combined the physical properties of a Schwartzchild black hole with an accretion disk made up of idealized particles emitting light. A notable feature of this image pointed out in [2] is the difference in luminosity between different regions on the disk, we the maximum luminosity appears near the event horizon, where the gas is hottest.
 
-  #### Geodesics
-  What is a geodesic? It is simply the locally shortest path (curve) between two points on a surface. 
-  
-  The full geodesic equation is as follows:
+![Luminet's black hole image](./img/luminets-black-hole.jpg)
 
-  $\frac{d^2 x^\mu}{ds^2}+\Gamma^\mu {}_{\alpha \beta}{d x^\alpha \over ds}{d x^\beta \over ds}=0$
+Figure: Lumine's black hole image [3].
 
-  where $s$ is an affine paramter (a scalar that varies linearly along the path of the geodesic) and $\Gamma^\mu {}_{\alpha \beta}$ are Christffel symbols symmetric in the two lower indices.
+#### The first image of an actual black hole
 
-  The geometry of spacetime is 4 dimensional, denoted as 3+1 spacetime when there exists 3 spatial dimensions and 1 dimension of time. Therefore, the geodesics equation for spacetime explains the shortest distance between two "points" in time and space, more often called "events".
+One notable discovery was made in 2017 when the first image of an actual black hole was captured and later on published in 2019. Features seen in the simulation were confirmed to represent in real life, where the image both displays the shadow of the black hole and a luminous accretion disk. 
 
-  #### The Schwartzchild metric
-  In the case of the Schwartzchild metric, the geodesics equation is simplified by functionally removing all mass from the universe, and only modelling the external gravitational field of an uncharged, static, spherically symmetric body with a mass M. The approximation is accurate enough for objects with small masses, or massless objects (such as photons).
+![EHT Black hole image of M87](./img/eht-black-hole-m87.jpg)
 
-  The Schwartzchild solution can be written as 
-  
-  $ds^2=c^2 {d \tau}^{2} = 
-\left( 1 - \frac{r_\text{s}}{r} \right) c^{2} dt^{2} - \frac{dr^{2}}{1 - \frac{r_\text{s}}{r}} - r^{2} (d\theta^{2} + \sin^{2} \theta \, d\varphi^{2})$
+Figure: EHT black hole image of M87 [4].
 
-  where
-  * $ds^2$ is the spacetime distance, the distance between two events in both time and space
-  * $\tau$ is the proper time in seconds (for particles with mass)
-  * $c$ is the speed of light in m/s
-  * $t$ is the time coordinate (for $r>r_s$)
-  * $r$ is the radial coordinate (for $r>r_s$)
-  * $\theta$ is the colatitude in radians
-  * $\phi$ is the longitude in radians
-  * $r_s$ is the Schwartzchild radius in meters
-  
-  For somethinge that travels at the speed of light,
-  the spacetime distance between two events is zero 
-  (giving the name "null geodesic").
+#### Modern black hole simulations
 
-  Another simplification can be made, since the model describes a spherically symmetric mass, the gravity is the same in every direction, the colatitude is constant. 
+Modern black hole simulations are used to produce data which can be compared with real life observations testing the current theories which aim to model the universe. These modern simulation run on super computers, one such simulation produced by the Simulating eXtreme Spacetimes, SXS, collaboration modelled what happens when two black holes merge to a bigger black hole causing a phenomena called gravitational waves, ripples in spacetime.
 
-  Furthermore, a particle that is only influenced by one force, such as gravity, move in one 2D plane.
-  
-  Therefore, we can simplify the Schwartzchild solution:
+![SXS black hole merger](./img/SXS-merger.jpg)
 
-  $ds^2= 
-\left( 1 - \frac{r_\tex
-  Interesting reads:
-    - [Einstein-online](https://www.einstein-online.info/en/spotlight/)
+Figure: SXS black hole merger [5]
 
 ### Background
-  There are many physics and maths concepts neeeded to model an accurate black hole visualization.
+
+  There are many physics and maths concepts neeeded to model an accurate (but simplified) black hole visualization.
 
   #### Key concepts:
   - Numeric methods (RK4)
@@ -121,9 +93,9 @@ Grade aim: A
   The geometry of spacetime is 4 dimensional, denoted as 3+1 spacetime when there exists 3 spatial dimensions and 1 dimension of time. Therefore, the geodesics equation for spacetime explains the shortest distance between two "points" in time and space, more often called "events".
 
   #### The Schwartzchild metric
-  In the case of the Schwartzchild metric, the geodesics equation is simplified by functionally removing all mass from the universe, and only modelling the external gravitational field of an uncharged, static, spherically symmetric body with a mass M. The approximation is accurate enough for objects with small masses, or massless objects (such as photons).
+  In the case of the Schwartzchild metric, the geodesics equation is simplified by functionally removing all mass from the universe, and only modelling the external gravitational field of an uncharged, static, spherically symmetric body with a mass M, which may be a Schwartzchild black hole. The approximation is accurate enough for objects with small masses, or massless objects (such as photons).
 
-  The Schwartzchild solution can be wriGrav-lensing.svgtten as 
+  The Schwartzchild solution can be written as 
   
   $ds^2=c^2 {d \tau}^{2} = 
 \left( 1 - \frac{r_\text{s}}{r} \right) c^{2} dt^{2} - \frac{dr^{2}}{1 - \frac{r_\text{s}}{r}} - r^{2} (d\theta^{2} + \sin^{2} \theta \, d\varphi^{2})$
@@ -167,7 +139,7 @@ This gives rise to a parameter $b=\frac{L}{E}$, the impact parameter. Geometrica
 
 ![Geometric explanation of b](/report/img/Trajectory-of-photons-impact-paramter-deflection-angle.png)
 
-Figure: Trajectory of photons, impact parameter and deflection angle [2].
+Figure: Trajectory of photons, impact parameter and deflection angle [3].
 
 Switching to [natural units](https://en.wikipedia.org/wiki/Natural_units) (c = 1 and G = 1). Thus:
 * $r_s=2M$
@@ -195,7 +167,7 @@ $\frac{d\varphi}{ds}=\frac{L}{r^2}$
 
 $\frac{dr}{ds} = \plusmn\sqrt{E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}}$
 
-where the sign of $\frac{dr}{ds}$ is determined by if the photon is radially in- or outfalling, where and outfalling photon has a positive change and an infalling photon has a negative change [3].
+where the sign of $\frac{dr}{ds}$ is determined by if the photon is radially in- or outfalling, where and outfalling photon has a positive change and an infalling photon has a negative change [6].
 
 #### Applied RK4
 
@@ -226,12 +198,6 @@ Since $s$ is only implied $f$ is a function of $\vec{y}$
 
 RK4 loops:
 
-
-
-
-### Previous research
-
-One of the earliest uses for modelling black holes is the 
 
 ## 2. Implementation specifics (as many as possible)
 Technologies, physics problem, constraints
@@ -264,9 +230,15 @@ holes.
 ## 4. References (2-3)
 [1] F. Bacchini, B. Ripperda, A. Y. Chen, and L. Sironi, “Generalized, Energy-conserving Numerical Simulations of Particles in General Relativity. I. Time-like and Null Geodesics,” The Astrophysical Journal Supplement Series, vol. 237, no. 1, p. 6, Jul. 2018, doi: 10.3847/1538-4365/aac9ca.
 
-[2] J.-P. Luminet, “Image of a spherical black hole with thin accretion disk.,” \aap, vol. 75, pp. 228–235, May 1979.
+[2] J.-P. Luminet, “Seeing Black Holes: From the Computer to the Telescope”, Universe, vol. 4, no. 8, p. 86, Aug. 2018, doi: 10.3390/universe4080086
 
-[3] Y. Ali-Haïmoud, General Relativity Lectures 2019. Lectures 19-20. https://cosmo.nyu.edu/yacine/teaching/GR_2019/lectures/ (Retrieved 4 mars 2026)
+[3] J.-P. Luminet, “Image of a spherical black hole with thin accretion disk.”, \aap, vol. 75, pp. 228–235, May 1979.
+
+[4] S. Doeleman, “Focus on the First Event Horizon Telescope Results", April 2019. https://iopscience.iop.org/journal/2041-8205/page/Focus_on_EHT
+
+[5] W. Clavin, "Physicists Create New Model of Ringing Black Holes", Caltech, February 2023. https://www.caltech.edu/about/news/physicists-create-new-model-of-ringing-black-holes
+
+[6] Y. Ali-Haïmoud, General Relativity Lectures 2019. Lectures 19-20. https://cosmo.nyu.edu/yacine/teaching/GR_2019/lectures/ (Retrieved 4 mars 2026)
 
 ## 5. Potential risks/challenges (And how they might be avoided/minimized)
 
