@@ -108,11 +108,11 @@ Figure: SXS black hole merger [5]
   the spacetime distance between two events is zero 
   (giving the name "null geodesic").
 
-  Another simplification can be made, since the model describes a spherically symmetric mass, the gravity is the same in every direction, the colatitude is constant. 
+  Another simplification can be made, since the model describes a spherically symmetric mass, the gravity is the same in every direction. 
 
-  Furthermore, a particle that is only influenced by one force, such as gravity, move in one 2D plane.
+  Furthermore, a particle that is only influenced by one force, such as gravity, move in one 2D plane. Therefore, the colatitude can be thought of as $\theta = \pi / 2$.
   
-  Therefore, we can simplify the Schwartzchild solution:
+  Then we can simplify the Schwartzchild solution:
 
   $ds^2= 
 \left( 1 - \frac{r_\text{s}}{r} \right) c^{2} dt^{2} - \frac{dr^{2}}{1 - \frac{r_\text{s}}{r}} - r^{2} d\varphi^{2} = 0$
