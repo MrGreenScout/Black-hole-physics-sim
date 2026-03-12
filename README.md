@@ -2,6 +2,12 @@
 
 ## Blog
 
+### 2026-03-10: Post 3 - A rethinking of project
+
+My first plan was creating this project in Unity, but after further thought and some programatic testing I changed direction. Since time is limited, and I'm not that proficent in Unity I have decided to change the program to be built with C++ and SDL2, since I am more comfortable with that.
+
+I have since started work on the 2D version of the project and I am almost done with the null geodesic logic for the photon. Finding the turning point of a photon's path (determining the sign of $\frac{dr}{ds}$) has proven more difficult than expected but I will prevail...
+
 ### 2026-03-05: Post 2 - Background research
 
 Since the last post I have basically only been trying to understand the subject, surprisingly (or maybe not so surprising) general relativity is quite diffcult to wrap your mind about.
