@@ -1,0 +1,1 @@
+g++ src/$1.cpp -o out/$1 $(sdl2-config --cflags --libs) -I$PWD/include && ./out/$1
