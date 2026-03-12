@@ -1,13 +1,55 @@
 #pragma once
 
-class BlackHole
+#include <vector>
+#include <memory>
+
+#include <SDL2/SDL_render.h>
+
+#include "photon.hpp"
+#include "window.hpp"
+#include "black_hole.hpp"
+#include "camera.hpp"
+
+class Scene2
 {
 public:
-    /** The mass of the black hole */
-    double mass;
+    Camera2 camera = Camera2(Vector3(0,0,0));
+    BlackHole blackHole;
 
-    /** The Schwartzchild radius */
-    double rs;
+    std::vector<Photon2> photons;
 
-    BlackHole(double mass) : mass(mass) { rs = 2 * mass; }
+    Scene2(BlackHole blackHole) : blackHole(blackHole) {}
+
+    void addPhoton(Vector3 position, Vector3 direction)
+    {
+        photons.emplace_back(Photon2(position, direction, blackHole));
+    }
+
+    void drawScene(SDL_Renderer *renderer)
+    {
+        // Draws the black hole
+        auto pos = camera.toScreenSpaceCoordinate(Vector3(0, 0, 0));
+        Shapes::drawCircle(renderer, std::get<0>(pos), std::get<1>(pos), 
+                           blackHole.rs * camera.pixelsPerUnit, RED);
+
+        // Draws all photon paths
+        for (auto& photon : photons)
+        {
+            photon.stepForward();
+            size_t historyc = photon.path.size();
+            for (size_t i = historyc - 1; i > 0; i--)
+            {
+                // Create fading color
+                int alpha = int(255.999 * i / Photon2::maxHistorySize);
+                SDL_SetRenderDrawColor(renderer, alpha, alpha, alpha, 255);
+
+                auto a = camera.toScreenSpaceCoordinate(photon.path.at(i)),
+                     b = camera.toScreenSpaceCoordinate(photon.path.at(i - 1));
+                
+                SDL_RenderDrawLine(renderer, 
+                                   std::get<0>(a), std::get<1>(a), 
+                                   std::get<0>(b), std::get<1>(b));
+            }
+        }
+    }
 };
