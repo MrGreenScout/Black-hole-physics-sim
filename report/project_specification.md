@@ -186,7 +186,7 @@ This gives the constants:
 
 $L=r_0^2\dot{\varphi}_0$ and
 
-$E=\sqrt{\dot{r}_0^2+(1-\frac{r_s}{r})(\frac{L}{\dot{r}_0})^2}$ (No ± since the energy is positive)
+$E=\sqrt{\dot{r}_0^2+(1-\frac{r_s}{r})(\frac{L}{r_0})^2}$ (No ± since the energy is positive)
 
 Since $s$ is only implied $f$ is a function of $\vec{y}$
 
