@@ -2,6 +2,17 @@
 
 ## Blog
 
+### 2026-03-12: Post 4 - First window and first photon
+
+Getting a window open and drawing a circle was quite easy with SDL2. After that I implemented panning around with the mouse,
+and getting the circle to represent a black hole, where the circles radius depends on the black hole's mass.
+
+![First window](./report/img/first-window.png)
+
+The photons themselves were more difficult, sometimes just converting between coordinate systems and other times fundamental failures in physics. Below you can see some of the first (and the most buggy) photons in the program, as you can see the photon to the right has done a U-turn before the black hole, very realistic...
+
+![First buggy photon](./report/img/first-photon.png)
+
 ### 2026-03-10: Post 3 - A rethinking of project
 
 My first plan was creating this project in Unity, but after further thought and some programatic testing I changed direction. Since time is limited, and I'm not that proficent in Unity I have decided to change the program to be built with C++ and SDL2, since I am more comfortable with that.
