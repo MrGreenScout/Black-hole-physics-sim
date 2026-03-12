@@ -3,3 +3,12 @@
 Implementation/black-hole-simulation
 Implementation/black-hole-simulation-cpp/out/*
 Implementation/black-hole-simulation-cpp/src/black_hole_sim_2d
+
+# adds .vscode folder to ignored files
+.vscode/**/*
+
+# exclude these files from being ignored
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
