@@ -2,6 +2,10 @@
 
 ## Blog
 
+### 2026-03-13: Post 7 - Now you can try it out on the web!
+
+I got github pages support working, now you can access the program from anywere as simple as going to [this](https://mrgreenscout.github.io/Black-hole-physics-sim/) link.
+
 ### 2026-03-13: Post 6 - Date of submission: Part 2
 
 Finally got it working, such a stupid bug, don't accidentally forget that the path of the photons should be renderer using carthesian coordinates not radial... 
