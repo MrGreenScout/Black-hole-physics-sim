@@ -13,16 +13,23 @@
 class Scene2
 {
 public:
+    constexpr static const size_t MAX_PHOTONS = 20;
+
     Camera2 camera;
     BlackHole blackHole;
 
-    std::vector<Photon2> photons;
+    std::deque<Photon2> photons;
 
     Scene2(BlackHole blackHole, int width, int height) : blackHole(blackHole), camera(Camera2(Vector3(0,0,0), width, height)) {}
 
     void addPhoton(Vector3 position, Vector3 direction)
     {
         photons.emplace_back(Photon2(position, direction, blackHole));
+
+        if (photons.size() > MAX_PHOTONS) 
+        {
+            photons.pop_front();
+        }
     }
 
     void drawScene(SDL_Renderer *renderer)
