@@ -2,7 +2,7 @@
 
 ## How to run
 ### Web build
-Going this repository's pages site at [https://mrgreenscout.github.io/Black-hole-physics-sim/](https://mrgreenscout.github.io/Black-hole-physics-sim/) you can test the program out.
+By going to this repository's pages site at [https://mrgreenscout.github.io/Black-hole-physics-sim/](https://mrgreenscout.github.io/Black-hole-physics-sim/) you can test the program out.
 
 I reserve myself for bugs in the web build, I have tested it on Ubuntu Linux with firefox and it works well, but on windows (opera) for spawning photons the drag-clicking needs another click for it to actually spawn, it is what it is.
 
