@@ -1,5 +1,9 @@
 # Blackhole-Physics-Sim
 
+![Bendning space time 1](./report/img/bendning-space-1.png)
+
+This is the final project in the course DD1554 models and simulation KTH, the Royal Institute of Technology. This project models a Schwartzchild black hole and the geodesic orbits of photons in close proximity to it.
+
 ## How to run
 ### Web build
 By going to this repository's pages site at [https://mrgreenscout.github.io/Black-hole-physics-sim/](https://mrgreenscout.github.io/Black-hole-physics-sim/) you can test the program out.
