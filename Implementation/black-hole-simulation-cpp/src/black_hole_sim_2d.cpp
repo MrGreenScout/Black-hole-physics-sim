@@ -6,19 +6,20 @@
 #include "scene.hpp"
 #include "camera.hpp"
 
-#define TARGET_FPS 24
-#define FRAME_DELAY 1000 / TARGET_FPS
+#define TARGET_FPS 60
+#define SCREEN_WIDTH 600
+#define SCREEN_HEIGHT 400
 
 int main(int argc, char const *argv[])
 {
     std::cout << "Starting simulation window\n";
     
     BlackHole sagittariusA(8.54 * 1e36);
-    Scene2 scene(sagittariusA);
+    Scene2 scene(sagittariusA, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     SDL_Window* window;
     SDL_Renderer* renderer;
-    Window::createWindow(window, renderer, 600, 400, "Black hole simulation 2D");
+    Window::createWindow(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, "Black hole simulation 2D");
 
     UserInterface userInterface(renderer, &scene);
 
@@ -48,9 +49,10 @@ int main(int argc, char const *argv[])
 
         userInterface.updateUI();
 
+        int frameDelay = 1000 / TARGET_FPS;
         Uint32 frameTime = SDL_GetTicks() - frameStart;
-        if (frameTime < FRAME_DELAY)
-            SDL_Delay(FRAME_DELAY - frameTime);
+        if (frameTime < frameDelay)
+            SDL_Delay(frameDelay - frameTime);
 
         Window::updateRenderer(renderer);
     }

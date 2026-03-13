@@ -15,7 +15,7 @@ public:
     double rs;
 
     /** Geometric Mass unitless constant */
-    long double massGeo = G_SI * mass / (C_SI * C_SI);
+    long double massGeo;
 
-    BlackHole(double mass) : mass(mass) { rs = 2; }
+    BlackHole(double mass) : mass(mass), massGeo(G_SI * mass / (C_SI * C_SI)) { rs = 2; }
 };

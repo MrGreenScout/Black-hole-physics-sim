@@ -64,13 +64,9 @@ public:
         {
             isDraging = false;
 
-            Vector3 dir = Vector3(
-                std::get<0>(dragEnd) - std::get<0>(dragStart), 
-                std::get<1>(dragEnd) - std::get<1>(dragStart),
-                0
-            );
-            scene->addPhoton(scene->camera.toWorldSpaceCoordinate(dragEnd), dir);
-
+            Vector3 dragStartW = scene->camera.toWorldSpaceCoordinate(dragStart),
+                    dragEndW = scene->camera.toWorldSpaceCoordinate(dragEnd);
+            scene->addPhoton(dragStartW, dragEndW - dragStartW);
         }
         else if (event->type == SDL_MOUSEWHEEL)
         {

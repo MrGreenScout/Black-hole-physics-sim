@@ -18,7 +18,7 @@ private:
 
     /** Polar coordinates */
     double phi, r;
-    double dphi, dr;
+    double dphi;//, dr;
     double drSign;
 
     /** The Schwartzchild radius */
@@ -54,22 +54,34 @@ public:
 
         Vector3 rNorm   = normalize(Vector3(x, y, 0));
         Vector3 phiNorm = normalize(Vector3(-y, x, 0));
-        this->dr   = dot(dir, rNorm);
+        double dr   = dot(dir, rNorm);
         this->dphi = dot(dir, phiNorm) / r;
 
         this->drSign = rSgn(dot(dir, rNorm));
-        this->dr = abs(this->dr);
+        //this->dr = abs(this->dr);
 
         L = r * r * dphi;
         E = sqrt((dr * dr) + ((1 - (rs / r)) * L * L / (r * r)));
     }
 
+    double properRadius(double r)
+    {
+        if (r <= rs) return rs;
+
+        double term1 = sqrt(r * (r - rs));
+        double term2 = rs * log((sqrt(r) + sqrt(r - rs)) / sqrt(rs));
+
+        return term1 + term2;
+    }
+
     /** Gets the current carthesian position of the photon */
     Vector3 position()
     {
+        double pr = properRadius(this->r);
+
         return Vector3(
-            this->r * cos(this->phi),
-            this->r * sin(this->phi),
+            pr * cos(this->phi),
+            pr * sin(this->phi),
             0
         );
     }
@@ -100,9 +112,9 @@ public:
         double sign = drSign;
 
         Vector3 k1 = f(r, phi, sign),
-                k2 = f(r + h / 2.0 * k1.x(), phi + h / 2.0 * k1.y(), sign),
-                k3 = f(r + h / 2.0 * k2.x(), phi + h / 2.0 * k2.y(), sign),
-                k4 = f(r + h * k3.x(), phi + h * k3.y(), sign);
+                k2 = f(r + h / 2.0 * k1.x(), phi + h / 2.0 * k1.y(), rSgn(k1.x())),
+                k3 = f(r + h / 2.0 * k2.x(), phi + h / 2.0 * k2.y(), rSgn(k2.x())),
+                k4 = f(r + h * k3.x(), phi + h * k3.y(), rSgn(k3.x()));
         
         Vector3 result = Vector3(r, phi, 0) + (h / 6.0) * (k1 + 2.0 * k2 + 2.0 * k3 + k4);
 
@@ -126,7 +138,7 @@ public:
             this->r = stateStart.x();
             this->phi = stateStart.y();
             Vector3 dstate = f(stateStart.x(), stateStart.y(), drSign);
-            this->dr   = abs(dstate.x());
+            //this->dr   = abs(dstate.x());
             this->dphi = dstate.y();
 
             if (abs(stateStart.x() - stateMid.x()) < 1e-15) break;
@@ -138,7 +150,11 @@ public:
     /** Steps the photon forward one step h in the affine parameter */
     std::optional<Vector3> stepForward()
     {
-        if (this->absorbed == true) return {};
+        if (this->absorbed == true) 
+        {
+            if (path.size() > 0) path.pop_front();
+            return {};
+        }
 
         Vector3 state;
         double r1;
@@ -184,11 +200,11 @@ public:
 
         this->r = state.x();
         this->phi = state.y();
-        this->dr = abs(dstate.x());
+        //this->dr = abs(dstate.x());
         this->dphi = dstate.y();
 
         // Register path history
-        path.push_back(state);
+        path.push_back(position());
 
         if (path.size() >= maxHistorySize) path.pop_front();
 

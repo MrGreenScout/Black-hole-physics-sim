@@ -12,17 +12,18 @@ class Camera2
 public:
     constexpr static const double DEFAUL_PIXELS_PER_UNIT = 10;
 
+    int width = 600, height = 400;
     Vector3 position = Vector3(0, 0, 0);
     double pixelsPerUnit = DEFAUL_PIXELS_PER_UNIT;
 
-    Camera2(Point3 position)  : position(position)
+    Camera2(Point3 position, int width, int height)  : position(position), width(width), height(height)
     {
 
     }
 
     void translate(Vector3 delta)
     {
-        this->position += delta;
+        this->position += delta * Vector3(-1, 1, 0) * 0.1;
     }
 
     void zoom(int ticks)
@@ -32,17 +33,23 @@ public:
 
     Point3 toWorldSpaceCoordinate(std::pair<int, int> screenCoordinate)
     {   
-        double x = (static_cast<double>(screenCoordinate.first) - position.x()) / pixelsPerUnit,
-               y = (position.y() - static_cast<double>(screenCoordinate.second)) / pixelsPerUnit;
-               
+        double sx = static_cast<double>(screenCoordinate.first),
+               sy = static_cast<double>(screenCoordinate.second);
+
+        double x = (sx - width * 0.5) / pixelsPerUnit + position.x(),
+               y = (height * 0.5 - sy) / pixelsPerUnit + position.y();
+
         return Point3(x, y, 0);
     }
 
     std::pair<int, int> toScreenSpaceCoordinate(Point3 point)
     {
-        int x = point.x() * pixelsPerUnit + position.x(),
-            y = position.y() - point.y() * pixelsPerUnit;
-        
-        return std::make_pair(x,y);
+        double sx = (point.x() - position.x()) * pixelsPerUnit + width * 0.5;
+        double sy = height * 0.5 - (point.y() - position.y()) * pixelsPerUnit;
+
+        return {
+            static_cast<int>(std::round(sx)),
+            static_cast<int>(std::round(sy))
+        };
     }
 };

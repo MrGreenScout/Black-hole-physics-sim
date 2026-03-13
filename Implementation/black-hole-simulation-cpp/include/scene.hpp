@@ -13,12 +13,12 @@
 class Scene2
 {
 public:
-    Camera2 camera = Camera2(Vector3(0,0,0));
+    Camera2 camera;
     BlackHole blackHole;
 
     std::vector<Photon2> photons;
 
-    Scene2(BlackHole blackHole) : blackHole(blackHole) {}
+    Scene2(BlackHole blackHole, int width, int height) : blackHole(blackHole), camera(Camera2(Vector3(0,0,0), width, height)) {}
 
     void addPhoton(Vector3 position, Vector3 direction)
     {
@@ -28,7 +28,7 @@ public:
     void drawScene(SDL_Renderer *renderer)
     {
         // Draws the black hole
-        auto pos = camera.toScreenSpaceCoordinate(Vector3(0, 0, 0));
+        auto pos = this->camera.toScreenSpaceCoordinate(Vector3(0, 0, 0));
         Shapes::drawCircle(renderer, std::get<0>(pos), std::get<1>(pos), 
                            blackHole.rs * camera.pixelsPerUnit, RED);
 
@@ -37,14 +37,17 @@ public:
         {
             photon.stepForward();
             size_t historyc = photon.path.size();
+            
+            if (historyc < 2) continue;
+
             for (size_t i = historyc - 1; i > 0; i--)
             {
                 // Create fading color
                 int alpha = int(255.999 * i / Photon2::maxHistorySize);
                 SDL_SetRenderDrawColor(renderer, alpha, alpha, alpha, 255);
 
-                auto a = camera.toScreenSpaceCoordinate(photon.path.at(i)),
-                     b = camera.toScreenSpaceCoordinate(photon.path.at(i - 1));
+                auto a = this->camera.toScreenSpaceCoordinate(photon.path[i]),
+                     b = this->camera.toScreenSpaceCoordinate(photon.path[i - 1]);
                 
                 SDL_RenderDrawLine(renderer, 
                                    std::get<0>(a), std::get<1>(a), 
