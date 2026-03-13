@@ -2,6 +2,24 @@
 
 ## Blog
 
+### 2026-03-13: Post 6 - Date of submission: Part 2
+
+Finally got it working, such a stupid bug, don't accidentally forget that the path of the photons should be renderer using carthesian coordinates not radial... 
+
+Here are some pictures of a working photon simulation:
+
+![Bendning space time 1](./report/img/bendning-space-1.png)
+
+![Bendning space time 2](./report/img/bendning-space-2.png)
+
+### 2026-03-13: Post 5 - Date of submission: Part 1
+
+Loads of bugs still remain, hopefully I will be able to quickly squash them.
+
+The biggest are:
+- Black hole repels photos
+- Interfacing with the program is hindered by faulty coordinate system conversion between screen and world space
+
 ### 2026-03-12: Post 4 - First window and first photon
 
 Getting a window open and drawing a circle was quite easy with SDL2. After that I implemented panning around with the mouse,
