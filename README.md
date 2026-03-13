@@ -1,5 +1,25 @@
 # Blackhole-Physics-Sim
 
+## How to run
+### Web build
+Going this repository's pages site at [https://mrgreenscout.github.io/Black-hole-physics-sim/](https://mrgreenscout.github.io/Black-hole-physics-sim/) you can test the program out.
+
+I reserve myself for bugs in the web build, I have tested it on Ubuntu Linux with firefox and it works well, but on windows (opera) for spawning photons the drag-clicking needs another click for it to actually spawn, it is what it is.
+
+### Compiling from source
+1. Start off by cloning the repository
+2. cd into ```Implementations/black-hole-simulation-cpp```
+3. Run the command ```bash run.sh``` in the terminal
+4. The program window should open
+
+#### Prerequisits
+- bash is installed
+- SDL2 is installed
+- g++ is installed
+
+#### Note
+This has been built on Ubuntu Linux, I believe it should work quite flawlessly on MacOS but some difficulties may arise on Windows.
+
 ## Blog
 
 ### 2026-03-13: Post 7 - Now you can try it out on the web!
