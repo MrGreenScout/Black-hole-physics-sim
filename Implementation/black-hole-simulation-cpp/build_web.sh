@@ -1,4 +1,4 @@
-emcc src/main.cpp -o ./../black-hole-simulation-web/index.html \
+emcc src/main.cpp -o ./../../docs/index.html \
   -I ./src \
   -I ./include \
   -s USE_SDL=2 \
