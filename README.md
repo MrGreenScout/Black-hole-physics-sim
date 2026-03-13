@@ -1,4 +1,4 @@
-# Blackhole-Physics-Sim
+# Black-hole-Physics-Sim
 
 ![Bendning space time 1](./report/img/bendning-space-1.png)
 
