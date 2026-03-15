@@ -6,27 +6,16 @@ Grade aim: A
 ## 1. Some background to the area/problem
 
 ### Introduction
-  Black holes are a type of exotic celestial object, with the key feature being their extreme mass, so massive not even light can escape its pull. 
-  This makes for a very interesting subject, since as we know, light has no mass, so how does something massive "bend" the path of the light? 
-  Quite literally of course, bending space itself.
+Black holes are a type of exotic celestial object, with the key feature being their extreme mass, so massive not even light can escape its pull. This makes for a very interesting subject, since as we know, light has no mass, so how does something massive "bend" the path of the light? Quite literally of course, bending space itself.
   
-  The aim of this project is to visualize this bending of space-time close to a Schwarzschild black hole. This will be controlled by modeling a 
-  known phenomena that could be described as a looping mirror effect specified in [1]. Sending a photon from us, the observer, from a 
-  specific point in a specfic direction will yield a path that loops once around the black hole returning to us, the observer.
-  
+The aim of this project is to visualize this bending of space-time close to a Schwarzschild black hole. This will be controlled by modeling a known phenomena that could be described as a looping mirror effect specified in [1]. Sending a photon from us, the observer, from a specific point in a specfic direction will yield a path that loops once around the black hole returning to us, the observer.
 
-  Since the warping of space-time is not something we usually think about in everyday life it can be quite difficult to understand.
-  And due to this when we start to learn about a foreign subject like this we want to draw parallells to those things we know. This causes many
-  visualizations of similar character to simplify the subject too much, such as reducing the effects of a black hole, just describing it using 
-  newtonian physics. Some may state that they simulate photons when actually simulating particles with mass. This is wrong and part of this 
-  project's aim is to improve upon these lacking visualizations. A Key take-away from this visualization should be that gravity does not act 
-  like a force, it is instead a part of the geometry of space-time. Gravity does not effect photons, it effects the space the photons travel
-  through, warping it.
+Since the warping of space-time is not something we usually think about in everyday life it can be quite difficult to understand. Due to this when we start to learn about a foreign subject we want to draw parallells to those things we know. This causes many visualizations of similar character to simplify the subject too much, such as reducing the effects of a black hole, just describing it using newtonian physics. Some may state that they simulate photons when actually simulating particles with mass. This is wrong and part of this project's aim is to improve upon these lacking visualizations. A Key take-away from this visualization should be that gravity does not act like a force, it is instead a part of the geometry of space-time. Gravity does not effect photons, it effects the space the photons travel through, warping it.
 
-  Inspiration for the project: [Simulating Black Holes in C++](https://www.youtube.com/watch?v=8-B6ryuBkCM)
+Inspiration for the project: [Simulating Black Holes in C++](https://www.youtube.com/watch?v=8-B6ryuBkCM)
   
-  Interesting reads:
-    - [Einstein-online](https://www.einstein-online.info/en/spotlight/)
+Interesting reads:
+  - [Einstein-online](https://www.einstein-online.info/en/spotlight/)
 
 ### Previous research
 
@@ -40,7 +29,7 @@ Figure: Lumine's black hole image [3].
 
 #### The first image of an actual black hole
 
-One notable discovery was made in 2017 when the first image of an actual black hole was captured and later on published in 2019. Features seen in the simulation were confirmed to represent in real life, where the image both displays the shadow of the black hole and a luminous accretion disk. 
+One notable discovery was made in 2017 when the first image of an actual black hole was captured and later on published in 2019. Features seen in the simulation were confirmed to be present in real life. The image of the black hole both displays the shadow of the black hole and a luminous accretion disk. 
 
 ![EHT Black hole image of M87](./img/eht-black-hole-m87.jpg)
 
@@ -125,13 +114,13 @@ Dividing everything by $ds^2$, where $s$ is an affine parameter we get:
 
 $\left( 1 - \frac{r_\text{s}}{r} \right) c^{2}(\frac{dt}{ds})^2 - \frac{1}{1 - \frac{r_\text{s}}{r}} (\frac{dr}{ds})^2 - r^{2} (\frac{d\varphi}{ds})^{2} = 0$
 
-By analysing the geometric of the Schwartzfield metric we find two conserved quantities.
+By analysing the geometry of the Schwartzfield metric we find two conserved quantities.
 * $L$ is the angular momentum of the photon $L=r^2 \frac{d\varphi}{ds}$
 * $E$ is the energy of the photon $E=(1-\frac{r_s}{r})\frac{dt}{ds}$
 
 This gives rise to a parameter $b=\frac{L}{E}$, the impact parameter. Geometrically this is the perpendicular distance to the black hole from the photons asymptotic trajectory. $b=\frac{r^2}{(1-\frac{r_s}{r})}\frac{d\varphi}{dt}$
 
-![Geometric explanation of b](/report/img/Trajectory-of-photons-impact-paramter-deflection-angle.png)
+![Geometric explanation of b](./img/Trajectory-of-photons.png)
 
 Figure: Trajectory of photons, impact parameter and deflection angle [3].
 
@@ -161,7 +150,7 @@ $\frac{d\varphi}{ds}=\frac{L}{r^2}$
 
 $\frac{dr}{ds} = \plusmn\sqrt{E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}}$
 
-where the sign of $\frac{dr}{ds}$ is determined by if the photon is radially in- or outfalling, where and outfalling photon has a positive change and an infalling photon has a negative change [6].
+where the sign of $\frac{dr}{ds}$ is determined by if the photon is radially in- or outfalling, where an outfalling photon has a positive change in $r$ and an infalling photon has a negative change in $r$ [6].
 
 #### Applied RK4
 
@@ -174,8 +163,8 @@ $f(s,\vec{y})=\frac{d\vec{y}}{ds}=\begin{pmatrix}
   \frac{dr}{ds} \\
   \frac{d\varphi}{ds}
 \end{pmatrix}$ $=\begin{pmatrix}
-    \frac{L}{r^2} \\
-    \plusmn\sqrt{E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}}
+    \plusmn\sqrt{E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}} \\
+    \frac{L}{r^2}
 \end{pmatrix}$
 
 Initial parameters are $\vec{y}(0) = \vec{y}_0$ and $\frac{d\vec{y}}{ds}|_{s=0, \vec{y}=y_0}=\dot{y}_0=\begin{pmatrix}
@@ -186,38 +175,51 @@ This gives the constants:
 
 $L=r_0^2\dot{\varphi}_0$ and
 
-$E=\sqrt{\dot{r}_0^2+(1-\frac{r_s}{r})(\frac{L}{r_0})^2}$ (No ± since the energy is positive)
+$E=\sqrt{\dot{r}_0^2+(1-\frac{r_s}{r})(\frac{L}{r_0})^2}$
 
-Since $s$ is only implied $f$ is a function of $\vec{y}$
+This means $s$ is only implied, therefore $f$ is a function of $\vec{y}$, which means that the Runge-Kutta algorithm also is a function of just $\vec{y}$, $RK_4(\vec{y})$.
 
-RK4 loops:
+##### Loop for stepping along the affine parameter
+
+Let $\Delta(r)=(\frac{dr}{ds})^2=E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}$
+
+Calculate $\vec{y}_{n+1}=RK_4(\vec{y}_{n})$
+
+$\Delta(r)<0$ is an unphysical state, seen as trying to take the square root of a negative number. If this happens that is a sign we have gone past a point where the photon should turn from being infalling to outfalling, e.g. the sign of $\frac{dr}{ds}$ should change.
+
+Using the bisection method we find the $\vec{y}$ for which $\Delta(r)=0$ and  manually change the sign of $\frac{dr}{ds}$.
+
+We then check if $r_n \leq r_s$, then we can stop stepping since the photon has been absorbed by the black hole else we can continue steping from the newly calculated $\vec{y}_{n+1}$.
 
 
 ## 2. Implementation specifics (as many as possible)
-Technologies, physics problem, constraints
 
-  The project will be made using the unity game engine. First a 2D version will be made to keep the scope of the project down, then if
-  there's time for it, it may be expanded to 3D.
+  The project will be made using pure C++ and the graphics library SDL2. First a 2D version will be made to keep the scope of the project down, then if there's time for it, it may be expanded to 3D.
 
   #### Features:
+
+  Front-end 2D:
+  - A SDL2 window drawing a circle representing the black hole and lines of the paths of photons orbiting.
   
   The Black hole representation
   - Defining the Schwarzschild Radius, as simple as defining the black hole with a certain mass.
   
   Tracing the path of photons (through warped space-time)
-  - Solving geodesics equations (Einstein's equations) using the numeric method Runge-Kutta-4 for accurate results, in the context of the Schwartzchild metric.
+  - Solving geodesics equations (Einstein's equations) using the numeric method Runge-Kutta-4 for accurate results, in the context of the Schwartzchild metric. A good explaination found under the heading [Applied RK4](#applied-rk4).
+
+  Natural Units
+  - The units will be converted to natural units for easier computation, masses of great magnitudes will be converted to single digit floating point numbers. For example: $G=1$ and $c=1$.
 
 ## 3. Specifics of what the final system will look like
 and do (include sketches if you like)
 
 ### Description
 
-The system should be interactive in some way, to warrent a better understanding about how space-time warps near massive objects such as black 
-holes. 
+The system should be interactive in some way, such as the user can spawn photons with a specific direction and position, to warrant a better understanding about how space-time warps near massive objects such as black holes. 
 
 ### Images 
 
-![Inspiration for final system](img/inspiration.png "2D Representation")
+![Inspiration for final system](./img/inspiration.png "2D Representation")
 
 (Simulating Black Holes in C++ by kavan)
 
@@ -237,17 +239,13 @@ holes.
 ## 5. Potential risks/challenges (And how they might be avoided/minimized)
 
   Risks: 
-  - Scope creep. Minimized by clearly defined project boundaries and the acceptance of not everything needs to be modeled, some things can just be mentioned
+  - Scope creep. Can be minimized by clearly defined project boundaries and the acceptance that not everything needs to be modeled, some things can just be mentioned.
   - Ideas that are impossible to implement (though seem possible at the idea stage). Solved by rapid and continuous iterative prototyping for the project, testing ideas for feasablity.
 
 
 ## 6. Degree of simulation
-To what degree will the simulation use existing physics
-libraries versus being implemented from the ground up
 
-  The majority of the physics will be made from the ground up. The scope of the project depends heavily on modern physics but does feature only 
-  a few different concepts and formulas, that might as well be created from scratch for learning purposes. Physics Libraries for this do exist but
-  in this case they may be a bit unnecessary. Maths libraries may be used since the need for speed is great if the project should be able to run in real time.
+The majority of the physics will be made from the ground up. The scope of the project depends heavily on modern physics but does feature only a few different concepts and formulas, that might as well be created from scratch for learning purposes. Physics Libraries for this do exist but in this case they may be a bit unnecessary. Maths libraries may be used since the need for speed is great if the project should be able to run in real time.
   
 
 ## 7. Link to blog containing first blog entry
