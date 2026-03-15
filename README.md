@@ -2,7 +2,7 @@
 
 ![Bendning space time 1](./report/img/bendning-space-1.png)
 
-This is the final project in the course DD1554 models and simulation KTH, the Royal Institute of Technology. This project models a Schwartzchild black hole and the geodesic orbits of photons in close proximity to it.
+This is the final project in the course DD1354 models and simulation KTH, the Royal Institute of Technology. This project models a Schwartzchild black hole and the geodesic orbits of photons in close proximity to it.
 
 ## How to run
 ### Web build
