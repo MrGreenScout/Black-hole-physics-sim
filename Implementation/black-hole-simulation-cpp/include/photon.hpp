@@ -156,38 +156,12 @@ public:
             return {};
         }
 
-        Vector3 state;
-        double r1;
-        /*try
-        {
-            state = rk4step(H);
-            r1 = state.x();
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << e.what() << '\n';
-            return {};
-        }*/
-
-        double rNext = r + drSign * sqrt(delta(r)) * H;
-        if (delta(rNext) < 0)
+        Vector3 state = rk4step(H);
+        if (delta(state.x()) < 0)
         {
             state = findTurningPoint();
             drSign = -drSign;
         }
-        else
-        {
-            state = rk4step(H);
-            r1 = state.x();
-        }
-        
-        /*double d = delta(r1);
-        
-        if (d < 0.0)
-        {
-            state = findTurningPoint();
-            drSign = -drSign;
-        }*/
 
         if (state.x() <= rs) // If absorbed into black hole
         {
