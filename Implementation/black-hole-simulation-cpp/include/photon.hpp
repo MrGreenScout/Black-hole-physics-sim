@@ -77,7 +77,7 @@ public:
     /** Gets the current carthesian position of the photon */
     Vector3 position()
     {
-        double pr = properRadius(this->r);
+        double pr = r;//properRadius(this->r);
 
         return Vector3(
             pr * cos(this->phi),
@@ -165,6 +165,7 @@ public:
 
         if (state.x() <= rs) // If absorbed into black hole
         {
+            std::cout << "Absorbed\n";
             absorbed = true;
             return {};
         }

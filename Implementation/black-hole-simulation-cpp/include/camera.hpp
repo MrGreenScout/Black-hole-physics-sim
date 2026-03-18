@@ -15,6 +15,7 @@ public:
     int width = 600, height = 400;
     Vector3 position = Vector3(0, 0, 0);
     double pixelsPerUnit = DEFAUL_PIXELS_PER_UNIT;
+    double translationSpeed = DEFAUL_PIXELS_PER_UNIT * 1e-1;
 
     Camera2(Point3 position, int width, int height)  : position(position), width(width), height(height)
     {
@@ -28,7 +29,7 @@ public:
 
     void zoom(int ticks)
     {
-        pixelsPerUnit += DEFAUL_PIXELS_PER_UNIT * ticks * 1e-1;
+        pixelsPerUnit += translationSpeed * ticks;
     }
 
     Point3 toWorldSpaceCoordinate(std::pair<int, int> screenCoordinate)

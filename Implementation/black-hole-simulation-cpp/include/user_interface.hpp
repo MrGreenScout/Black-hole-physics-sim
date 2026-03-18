@@ -40,11 +40,13 @@ public:
 
     void updateUI()
     {
-        if (isDraging)
+        if (isDraging) 
+        {
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_RenderDrawLine(renderer,
                                std::get<0>(dragStart), std::get<1>(dragStart),
                                std::get<0>(dragEnd),   std::get<1>(dragEnd));
+        }
     }
 
     void updateEvents(SDL_Event *event) 

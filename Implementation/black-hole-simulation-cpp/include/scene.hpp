@@ -20,7 +20,11 @@ public:
 
     std::deque<Photon2> photons;
 
-    Scene2(BlackHole blackHole, int width, int height) : blackHole(blackHole), camera(Camera2(Vector3(0,0,0), width, height)) {}
+    Scene2(BlackHole blackHole, int width, int height) : blackHole(blackHole), camera(Camera2(Vector3(0,0,0), width, height)) 
+    {
+        //camera.pixelsPerUnit = Camera2::DEFAUL_PIXELS_PER_UNIT / blackHole.massGeo;
+        //camera.translationSpeed /= blackHole.massGeo;
+    }
 
     void addPhoton(Vector3 position, Vector3 direction)
     {
@@ -34,8 +38,11 @@ public:
 
     void drawScene(SDL_Renderer *renderer)
     {
+        auto pos = this->camera.toScreenSpaceCoordinate(Vector3(0, 0, 0)); // Black hole position
+        // Draws photon sphere
+        Shapes::drawCircle(renderer, std::get<0>(pos), std::get<1>(pos),
+                           blackHole.photonSphere * camera.pixelsPerUnit, BLUE);
         // Draws the black hole
-        auto pos = this->camera.toScreenSpaceCoordinate(Vector3(0, 0, 0));
         Shapes::drawCircle(renderer, std::get<0>(pos), std::get<1>(pos), 
                            blackHole.rs * camera.pixelsPerUnit, RED);
 

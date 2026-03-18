@@ -13,9 +13,14 @@ public:
 
     /** The Schwartzchild radius */
     double rs;
+    double photonSphere;
 
     /** Geometric Mass unitless constant */
     long double massGeo;
 
-    BlackHole(double mass) : mass(mass), massGeo(G_SI * mass / (C_SI * C_SI)) { rs = 2; }
+    BlackHole(double mass) : mass(mass), massGeo(G_SI * mass / (C_SI * C_SI)) 
+    { 
+        rs = 2;
+        photonSphere = 1.5 * rs;
+    }
 };
