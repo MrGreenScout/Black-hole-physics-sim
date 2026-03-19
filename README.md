@@ -26,6 +26,14 @@ This has been built on Ubuntu Linux, I believe it should work quite flawlessly o
 
 ## Blog
 
+### 2026-03-19: Post 8 - Updated visualization and another coordinate system bug
+
+Updated the visualization, now the coordinate system correctly converts from screen space to world space to screen space again, so now I added a circle for the photon sphere too, the distance from the black hole a photon can acheive a stable orbit. Inside the photon sphere the photon collapses into the black hole and outside the photon escapes the black holes grasp.
+
+![Updated image](./report/img/Updated-visualization.png)
+
+Disclaimer: I have not yet updated the web build, will be updated later
+
 ### 2026-03-13: Post 7 - Now you can try it out on the web!
 
 I got github pages support working, now you can access the program from anywere as simple as going to [this](https://mrgreenscout.github.io/Black-hole-physics-sim/) link.
