@@ -148,7 +148,7 @@ This gives the derivatives used in Runge-Kutta 4:
 
 $\frac{d\varphi}{ds}=\frac{L}{r^2}$
 
-$\frac{dr}{ds} = \plusmn\sqrt{E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}}$
+$\frac{dr}{ds} = \pm\sqrt{E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}}$
 
 where the sign of $\frac{dr}{ds}$ is determined by if the photon is radially in- or outfalling, where an outfalling photon has a positive change in $r$ and an infalling photon has a negative change in $r$ [6].
 
@@ -163,7 +163,7 @@ $f(s,\vec{y})=\frac{d\vec{y}}{ds}=\begin{pmatrix}
   \frac{dr}{ds} \\
   \frac{d\varphi}{ds}
 \end{pmatrix}$ $=\begin{pmatrix}
-    \plusmn\sqrt{E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}} \\
+    \pm\sqrt{E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}} \\
     \frac{L}{r^2}
 \end{pmatrix}$
 
@@ -228,7 +228,7 @@ The system should be interactive in some way, such as the user can spawn photons
 
 [2] J.-P. Luminet, “Seeing Black Holes: From the Computer to the Telescope”, Universe, vol. 4, no. 8, p. 86, Aug. 2018, doi: 10.3390/universe4080086
 
-[3] J.-P. Luminet, “Image of a spherical black hole with thin accretion disk.”, \aap, vol. 75, pp. 228–235, May 1979.
+[3] J.-P. Luminet, “Image of a spherical black hole with thin accretion disk.”, aap, vol. 75, pp. 228–235, May 1979.
 
 [4] S. Doeleman, “Focus on the First Event Horizon Telescope Results", April 2019. https://iopscience.iop.org/journal/2041-8205/page/Focus_on_EHT
 
