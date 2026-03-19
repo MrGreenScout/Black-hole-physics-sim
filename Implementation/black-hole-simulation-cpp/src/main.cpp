@@ -65,7 +65,8 @@ int main(int argc, char const *argv[])
 {
     std::cout << "Welcome to the black hole physics sim!\n\n";
     std::cout << "Controls:\nMove around by holding LMB and draging\n";
-    std::cout <<  "Spawn photon by holding RMB, draging and releasing in the direction you want to photon to travel\n";
+    std::cout << "Zoom in/out by scrolling\n";
+    std::cout << "Spawn photon by holding RMB, draging and releasing in the direction you want to photon to travel\n";
     
     BlackHole sagittariusA(8.54 * 1e36);
     state.scene = new Scene2(sagittariusA, SCREEN_WIDTH, SCREEN_HEIGHT);
