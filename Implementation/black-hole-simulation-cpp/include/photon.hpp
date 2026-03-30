@@ -14,7 +14,8 @@
 class Photon2
 {
 private:
-    constexpr static const double H = 0.01;
+    constexpr static double H = 0.01;
+    constexpr static double ESCAPE_R = 50;
 
     /** Polar coordinates */
     double phi, r;
@@ -28,7 +29,8 @@ private:
     double L, E;
 
     /** boolean flags */
-    bool absorbed = false;
+    bool absorbed = false,
+          escaped = false;
 
     double rSgn(double dr0)
     {
@@ -39,7 +41,7 @@ private:
     }
 
 public:
-    constexpr static const int maxHistorySize = 1000;
+    constexpr static int MAX_HISTORY_SIZE = 1000;
 
     /** The path of the photon */
     std::deque<Vector3> path;
@@ -170,7 +172,7 @@ public:
     /** Steps the photon forward one step h in the affine parameter */
     std::optional<Vector3> stepForward()
     {
-        if (this->absorbed == true) 
+        if (this->absorbed == true || this->escaped == true) 
         {
             if (path.size() > 0) path.pop_front();
             return {};
@@ -190,6 +192,13 @@ public:
             return {};
         }
 
+        if (state.x() >= ESCAPE_R) // If escaped the black hole
+        {
+            std::cout << "escaped\n";
+            escaped = true;
+            return {};
+        }
+
         // Update current position and velocity
         Vector3 dstate = f(state.x(), state.y(), drSign);
 
@@ -201,7 +210,7 @@ public:
         // Register path history
         path.push_back(position());
 
-        if (path.size() >= maxHistorySize) path.pop_front();
+        if (path.size() >= MAX_HISTORY_SIZE) path.pop_front();
 
         return state;
     }
