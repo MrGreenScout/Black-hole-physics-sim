@@ -14,7 +14,7 @@
 class Photon2
 {
 private:
-    constexpr static const double H = 0.05;
+    constexpr static const double H = 0.01;
 
     /** Polar coordinates */
     double phi, r;
@@ -39,7 +39,7 @@ private:
     }
 
 public:
-    constexpr static const int maxHistorySize = 200;
+    constexpr static const int maxHistorySize = 1000;
 
     /** The path of the photon */
     std::deque<Vector3> path;
@@ -49,6 +49,8 @@ public:
         double x = pos.x(), 
                y = pos.y();
 
+        std::clog << "(x, y) = (" << x << ", " << y << ")\n";
+            
         this->rs = blackHole.rs;
 
         this->r = pos.length();
@@ -68,8 +70,18 @@ public:
         this->drSign = rSgn(dot(dir, rNorm));
         //this->dr = abs(this->dr);
 
-        L = r * r * dphi;
+        L = angularMomentum(r, dphi);
         E = sqrt((dr * dr) + ((1 - (rs / r)) * L * L / (r * r)));
+    }
+
+    static double angularMomentum(double r, double dphi) { return r * r * dphi; }
+    static double energy(double rs, double r, double dr, double dphi) 
+    { 
+        return sqrt((dr * dr) + ((1 - (rs / r)) * angularMomentum(r, dphi) * angularMomentum(r, dphi) / (r * r)));
+    }
+    static double impactB(double rs, double r, double dr, double dphi)
+    {
+        return angularMomentum(r, dphi) / energy(rs, r, dr, dphi);
     }
 
     double properRadius(double r)
@@ -82,7 +94,7 @@ public:
         return term1 + term2;
     }
 
-    /** Gets the current carthesian position of the photon */
+    /** Gets the current cartesian position of the photon */
     Vector3 position()
     {
         double pr = r;//properRadius(this->r);

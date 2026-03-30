@@ -11,13 +11,14 @@ csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/ha
 
 ![The final program](./img/thumbnail.png)
 
+\pagebreak
+
 # Introduction
 Black holes are a type of exotic celestial object, with the key feature being their extreme mass, so massive not even light can escape its pull. This makes for a very interesting subject, since as we know, light has no mass, so how does something massive "bend" the path of the light? Quite literally of course, bending space itself.
   
-The aim of this project is to visualize this bending of space-time close to a Schwartzchild black hole. This will be controlled by modeling a known phenomena that could be described as a looping mirror effect specified in [@Bacchini2018]. Sending a photon from us, the observer, from a specific point in a specific direction will yield a path that loops once around the black hole returning to us, the observer.
+The aim of this project is to visualize this bending of space-time close to a Schwartzchild black hole by providing the user with the tools to spawn in photons with a specified position and direction. Since the warping of space-time is a concept not often thought about in everyday life it is often quite difficult to build up a intuitive understanding of it. Through experimentation with this program intuition may be built. For example, this program will build the understanding that light behaves differently to mass-particles, even though they may look similar at first glance.
 
-Since the warping of space-time is not something we usually think about in everyday life it can be quite difficult to understand. Due to this when we start to learn about a foreign subject we want to draw parallels to those things we know. This causes many visualizations of similar character to simplify the subject too much, such as reducing the effects of a black hole, just describing it using newtonian physics. Some may state that they simulate photons when actually simulating particles with mass. This is wrong and part of this project's aim is to improve upon these lacking visualizations. A Key take-away from this visualization should be that gravity does not act like a force, it is instead a part of the geometry of space-time. Gravity does not effect photons, it effects the space the photons travel through, warping it.
-
+To evaluate this programs accuracy compared to the underlying theory the report will test some simple cases. The primary case will test the how accurate the stepping function of the simulation is, by comparing the theoretical answer to if a photon should be absorbed, orbit or escape the black hole, and the outcome of the simulation for different initial values.
 
 ## Previous research
 
@@ -102,8 +103,7 @@ Modern black hole simulations are used to produce data which can be compared wit
   
   Then we can simplify the Schwartzchild solution:
 
-  $ds^2= 
-\left( 1 - \frac{r_\text{s}}{r} \right) c^{2} dt^{2} - \frac{dr^{2}}{1 - \frac{r_\text{s}}{r}} - r^{2} d\varphi^{2} = 0$
+  $ds^2= \left( 1 - \frac{r_\text{s}}{r} \right) c^{2} dt^{2} - \frac{dr^{2}}{1 - \frac{r_\text{s}}{r}} - r^{2} d\varphi^{2} = 0$
 
 ### Bending light for numerical solving[^2]
 
@@ -114,15 +114,21 @@ Dividing everything by $ds^2$, where $s$ is an affine parameter we get:
 $\left( 1 - \frac{r_\text{s}}{r} \right) c^{2}(\frac{dt}{ds})^2 - \frac{1}{1 - \frac{r_\text{s}}{r}} (\frac{dr}{ds})^2 - r^{2} (\frac{d\varphi}{ds})^{2} = 0$
 
 By analysing the geometry of the Schwartzfield metric we find two conserved quantities.
+
 * $L$ is the angular momentum of the photon $L=r^2 \frac{d\varphi}{ds}$
+
 * $E$ is the energy of the photon $E=(1-\frac{r_s}{r})\frac{dt}{ds}$
 
 This gives rise to a parameter $b=\frac{L}{E}$, the impact parameter. Geometrically this is the perpendicular distance to the black hole from the photons asymptotic trajectory. $b=\frac{r^2}{(1-\frac{r_s}{r})}\frac{d\varphi}{dt}$
 
 ![Geometric explanation of b [@Luminet1979]](./img/Trajectory-of-photons.png)
 
+\pagebreak
+
 Switching to natural units[^3] (c = 1 and G = 1). Thus:
+
 * $r_s=2M$
+
 * $\left( 1 - \frac{r_\text{s}}{r} \right)(\frac{dt}{ds})^2 - \frac{1}{1 - \frac{r_\text{s}}{r}} (\frac{dr}{ds})^2 - r^{2} (\frac{d\varphi}{ds})^{2} = 0$
 
 $\frac{d\varphi}{ds}=\frac{L}{r^2}$
@@ -194,13 +200,33 @@ The project was programmed in C++14 with the graphics library SDL2 for making a 
 
 The physics was modelled using the built-in math library, no external physics library was used.
 
+## Evaluating the simulation
+
+To evaluate the model a quantitative method was chosen. 1000 photons are spawned evenly spaced out in the y direction with a set x position to the left of the black hole, and the same velocity going the right. For each photon the initial impact parameter is calculated from the angular momentum and energy of the photon. Two particular quantities are interesting for evaluating the model, that is the photon sphere radius and the critical impact parameter. As stated by @Sneppen2021 the photon sphere is the radius at which a photon may orbit the black hole, a lower orbit results in a collision with the black hole and a higher orbit results in a escape trajectory. The photon sphere has a value of $\frac{3}{2}R_s$ where $R_s$ is the Schwartzchild radius. The critical impact parameter $b_{crit}$ is the impact parameter distance within which a photon is captured, and outside it results in an escape trajectory.
+
+\pagebreak
+
+![Photon sphere](./img/photon-sphere.png)
+
+For visualization the photon sphere is interesting, since it clearly displays the boundary within which a photon is captured, and eventually absorbed. In the image above two circles are displayed, one red with the radius of the Schwartzchild radius and the blue representing the photon sphere.
+
+\pagebreak
+
+For each photon the impact parameter $b$ is calculated from the initial conditions, $b < b_{crit}$ will result in a captured and eventually absorbed photon otherwise it will escape, or eternally orbit. For each photon the expected outcome, absorbed or not absorbed is logged at initiation. After a set time, after which all meaningful physical events should have happened, all photons are checked for if they are absorbed or not and that value is compared with the expected outcome. This will provide a decent picture of how accurate the simulation is.
+
 # Results
+
+The aim of the project was to accurately visualize the bending of light near a black hole and by letting the user interact with the virtual world by spawning photons with customizable starting conditions. The resulting program represents a 2D cross-section of a universe only containing a Schwartzchild black hole. The user may pan and zoom around in this universe by using the mouse and, by right-click dragging and releasing, the user may create photons with a custom start position and direction. In [Appendix A](#appendix-a) the panning movement is depicted. In [Appendix B](#appendix-b) the zooming feature is depicted.
+
+![User-spawned photons close to the black hole](./img/photons-close.png)
+
+
 
 # Discussion
 
 ## The development process
 
-After the initial idea had been developed the specification process was mainly focused on translating the physics of the Schwartzchild metric to be solved numerically through code. Previous research suggested multiple ways of structuring the math for numerical solving, the solution that was chosen for this project was very closely related to the actual physics, and used only basic numerical methods for solving the geodesics equations. The chosen solution was discovered to be rather volatile and numerically unstable. This solution solved the equations purely numerically whereas another solution proposed in the wikipedia article for Schwartzchild geodesics suggested an analytic approach [^4] that would not need checks that would differentiate between in-falling and out-falling photons for example. 
+After the initial idea had been developed the specification process was mainly focused on translating the physics of the Schwartzchild metric to be solved numerically through code. Previous research suggested multiple ways of structuring the math for numerical solving, the solution that was chosen for this project was very closely related to the actual physics, and used only basic numerical methods for solving the geodesics equations. The chosen solution was discovered to be rather volatile and numerically unstable. This solution solved the equations purely numerically whereas another solution proposed in the wikipedia article for Schwartzchild geodesics [^4] suggested an analytic approach that would not need checks that would differentiate between in-falling and out-falling photons for example.
 
 ### Challenges
 
@@ -216,11 +242,27 @@ Due to the schwartzchild metric being geometrically symmetric, the photon always
 [^3]: [https://en.wikipedia.org/wiki/Natural_units](https://en.wikipedia.org/wiki/Natural_units)
 [^4]: [https://en.wikipedia.org/wiki/Schwarzschild_geodesics](https://en.wikipedia.org/wiki/Schwarzschild_geodesics#cite_ref-Schwarzschild_metric_3-0)
 
+\pagebreak
+
 # References
 
 ::: {#refs}
 :::
 
+\pagebreak
+
 # Appendix
 
-## Appendix A
+## Appendix A: Panning
+
+![pan1](./img/pan1.png)\
+![pan2](./img/pan2.png)\
+![pan3](./img/pan3.png)\
+![pan4](./img/pan4.png)\
+
+## Appendix B: Zooming
+
+![zoom1](./img/zoom1.png)\
+![zoom2](./img/zoom2.png)\
+![zoom3](./img/zoom3.png)\
+
