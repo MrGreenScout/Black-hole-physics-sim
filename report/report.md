@@ -9,14 +9,14 @@ urlcolor: "blue"
 csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/harvard-anglia-ruskin-university.csl"
 ---
 
-![The final program](./img/title-image.png)
+![The final program](./img/thumbnail.png)
 
 # Introduction
 Black holes are a type of exotic celestial object, with the key feature being their extreme mass, so massive not even light can escape its pull. This makes for a very interesting subject, since as we know, light has no mass, so how does something massive "bend" the path of the light? Quite literally of course, bending space itself.
   
-The aim of this project is to visualize this bending of space-time close to a Schwarzschild black hole. This will be controlled by modeling a known phenomena that could be described as a looping mirror effect specified in [@Bacchini2018]. Sending a photon from us, the observer, from a specific point in a specfic direction will yield a path that loops once around the black hole returning to us, the observer.
+The aim of this project is to visualize this bending of space-time close to a Schwartzchild black hole. This will be controlled by modeling a known phenomena that could be described as a looping mirror effect specified in [@Bacchini2018]. Sending a photon from us, the observer, from a specific point in a specific direction will yield a path that loops once around the black hole returning to us, the observer.
 
-Since the warping of space-time is not something we usually think about in everyday life it can be quite difficult to understand. Due to this when we start to learn about a foreign subject we want to draw parallells to those things we know. This causes many visualizations of similar character to simplify the subject too much, such as reducing the effects of a black hole, just describing it using newtonian physics. Some may state that they simulate photons when actually simulating particles with mass. This is wrong and part of this project's aim is to improve upon these lacking visualizations. A Key take-away from this visualization should be that gravity does not act like a force, it is instead a part of the geometry of space-time. Gravity does not effect photons, it effects the space the photons travel through, warping it.
+Since the warping of space-time is not something we usually think about in everyday life it can be quite difficult to understand. Due to this when we start to learn about a foreign subject we want to draw parallels to those things we know. This causes many visualizations of similar character to simplify the subject too much, such as reducing the effects of a black hole, just describing it using newtonian physics. Some may state that they simulate photons when actually simulating particles with mass. This is wrong and part of this project's aim is to improve upon these lacking visualizations. A Key take-away from this visualization should be that gravity does not act like a force, it is instead a part of the geometry of space-time. Gravity does not effect photons, it effects the space the photons travel through, warping it.
 
 
 ## Previous research
@@ -35,19 +35,19 @@ One notable discovery was made in 2017 when the first image of an actual black h
 
 ### Modern black hole simulations
 
-Modern black hole simulations are used to produce data which can be compared with real life observations testing the current theories which aim to model the universe. These modern simulation run on super computers, one such simulation produced by the Simulating eXtreme Spacetimes, SXS, collaboration modelled what happens when two black holes merge to a bigger black hole causing a phenomena called gravitational waves, ripples in spacetime [@Clavin2023].
+Modern black hole simulations are used to produce data which can be compared with real life observations testing the current theories which aim to model the universe. These modern simulation run on super computers, one such simulation produced by the Simulating eXtreme Space-times, SXS, collaboration modelled what happens when two black holes merge to a bigger black hole causing a phenomena called gravitational waves, ripples in spacetime [@Clavin2023].
 
 ![SXS black hole merger](./img/SXS-merger.jpg)
 
 ## Background
 
-  There are many physics and maths concepts neeeded to model an accurate (but simplified) black hole simulation. The main physics problem this project aims to model is a photons movement close to a static black hole which requires solving a geodesic equation in the Schwartzchild metric. 
+  There are many physics and maths concepts needed to model an accurate (but simplified) black hole simulation. The main physics problem this project aims to model is a photons movement close to a static black hole which requires solving a geodesic equation in the Schwartzchild metric. 
   
   The key concepts needed to build a black hole simulation are a numeric way of solving differential equations, parts of Einstein's general theory of relativity (including but not limited to geodesics equations) and the Schwartzchild metric.
 
 ### Runge-Kutta 4[^1]
 
-  A prerequisite for programmatically bendning light due to gravity is a numerical method that can be used to predict future position depending on current position and velocity. The method used in this project is the explicit Runge-Kutta 4 method, a fourth-order method that solves an equation of the form $\frac{dy}{dt}=f(t,y)$, $y(t_0)=y_0$ where $y$ is an unknown vector-valued function of a independet variable $t$.
+  A prerequisite for programmatically bending light due to gravity is a numerical method that can be used to predict future position depending on current position and velocity. The method used in this project is the explicit Runge-Kutta 4 method, a fourth-order method that solves an equation of the form $\frac{dy}{dt}=f(t,y)$, $y(t_0)=y_0$ where $y$ is an unknown vector-valued function of a independet variable $t$.
 
   $y_{n+1}=y_n+\frac{h}{6}(k_1+2k_2+2k_3+k_4)$
 
@@ -69,7 +69,7 @@ Modern black hole simulations are used to produce data which can be compared wit
 
   $\frac{d^2 x^\mu}{ds^2}+\Gamma^\mu {}_{\alpha \beta}{d x^\alpha \over ds}{d x^\beta \over ds}=0$
 
-  where $s$ is an affine paramter (a scalar that varies linearly along the path of the geodesic) and $\Gamma^\mu {}_{\alpha \beta}$ are Christoffel symbols symmetric in the two lower indices.
+  where $s$ is an affine parameter (a scalar that varies linearly along the path of the geodesic) and $\Gamma^\mu {}_{\alpha \beta}$ are Christoffel symbols symmetric in the two lower indices.
 
   The geometry of spacetime is 4 dimensional, denoted as 3+1 spacetime when there exists 3 spatial dimensions and 1 dimension of time. Therefore, the geodesics equation for spacetime explains the shortest distance between two "points" in time and space, more often called "events".
 
@@ -92,7 +92,7 @@ Modern black hole simulations are used to produce data which can be compared wit
   * $\phi$ is the longitude in radians
   * $r_s$ is the Schwartzchild radius in meters $r_s=\frac{2GM}{c^2}$
   
-  For somethinge that travels at the speed of light,
+  For something that travels at the speed of light,
   the spatial distance between two events is zero 
   (giving the name "null geodesic").
 
@@ -147,7 +147,7 @@ $\frac{d\varphi}{ds}=\frac{L}{r^2}$
 
 $\frac{dr}{ds} = \pm\sqrt{E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}}$
 
-where the sign of $\frac{dr}{ds}$ is determined by if the photon is radially in- or outfalling, where an outfalling photon has a positive change in $r$ and an infalling photon has a negative change in $r$ [@AliHaimoud2019].
+where the sign of $\frac{dr}{ds}$ is determined by if the photon is radially in- or out-falling, where an out-falling photon has a positive change in $r$ and an infalling photon has a negative change in $r$ [@AliHaimoud2019].
 
 ### Applied RK4
 
@@ -182,23 +182,39 @@ Let $\Delta(r)=(\frac{dr}{ds})^2=E^2 - (1-\frac{r_s}{r})\frac{L^2}{r^2}$
 
 Calculate $\vec{y}_{n+1}=RK_4(\vec{y}_{n})$
 
-$\Delta(r)<0$ is an unphysical state, seen as trying to take the square root of a negative number. If this happens that is a sign we have gone past a point where the photon should turn from being infalling to outfalling, e.g. the sign of $\frac{dr}{ds}$ should change.
+if $\Delta(r)<0$ that is an unphysical state, seen as trying to take the square root of a negative number. If this happens that is a sign we have gone past a point where the photon should turn from being in-falling to out-falling, e.g. the sign of $\frac{dr}{ds}$ should change.
 
-Using the bisection method we find the $\vec{y}$ for which $\Delta(r)=0$ and  manually change the sign of $\frac{dr}{ds}$.
+In the case of an unphysical state using the bisection method we find the $\vec{y}$ for which $\Delta(r)=0$ and  manually change the sign of $\frac{dr}{ds}$.
 
-We then check if $r_n \leq r_s$, then we can stop stepping since the photon has been absorbed by the black hole else we can continue steping from the newly calculated $\vec{y}_{n+1}$.
+We then check if $r_n \leq r_s$, then we can stop stepping since the photon has been absorbed by the black hole else we can continue stepping from the newly calculated $\vec{y}_{n+1}$.
 
 # Methods
 
-The project was programmed in C++ with the graphics library SDL2 for making a window and drawing graphics.
+The project was programmed in C++14 with the graphics library SDL2 for making a window and drawing graphics to the screen. The project was programmed and built on a Linux Machine running Ubuntu 22.04, using the g++ compiler for the native Linux build. To port to the web the Emscripten library was used, the compiler building to web was emcc. 
+
+The physics was modelled using the built-in math library, no external physics library was used.
 
 # Results
 
 # Discussion
 
+## The development process
+
+After the initial idea had been developed the specification process was mainly focused on translating the physics of the Schwartzchild metric to be solved numerically through code. Previous research suggested multiple ways of structuring the math for numerical solving, the solution that was chosen for this project was very closely related to the actual physics, and used only basic numerical methods for solving the geodesics equations. The chosen solution was discovered to be rather volatile and numerically unstable. This solution solved the equations purely numerically whereas another solution proposed in the wikipedia article for Schwartzchild geodesics suggested an analytic approach [^4] that would not need checks that would differentiate between in-falling and out-falling photons for example. 
+
+### Challenges
+
+The aforementioned in/out-falling check proved a conundrum to structure. The unphysical state that needed to be controlled in this solution appeared as a negative sign under a square-root. This signaled that a photon should have changed from in- to out-falling, meaning the sign of $\frac{dr}{ds}$ should have changed. This solution needed the sign to be changed manually when $\frac{dr}{ds} = 0$. Detecting exactly when $\frac{dr}{ds}$ was zero was impossible but detecting when the previously defined $\Delta(r)<0$ was much more simple, but choosing when to do this check was difficult. The final solution chose to accept the unphysical state of $\Delta(r)$ being negative by instead of throwing an error clamping it to zero. This means that the Runge-Kutta approximation results in an unphysical state but by checking $\Delta(r)<0$ in the main stepping loop any unphysical state is accounted for before the state of the photon is confirmed.
+
+## Further development
+
+Due to the schwartzchild metric being geometrically symmetric, the photon always moving in a 2D slice of 3D space, the code that has been written in this program may be reused for simulating a photon moving in 3D space. This may give rise to more advanced physics simulations where accretion disks and other phenomena we see close to black holes may be more closely observed.
+
+
 [^1]: [https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)
 [^2]: [https://en.wikipedia.org/wiki/Schwarzschild_geodesics](https://en.wikipedia.org/wiki/Schwarzschild_geodesics#cite_ref-Schwarzschild_metric_3-0)
 [^3]: [https://en.wikipedia.org/wiki/Natural_units](https://en.wikipedia.org/wiki/Natural_units)
+[^4]: [https://en.wikipedia.org/wiki/Schwarzschild_geodesics](https://en.wikipedia.org/wiki/Schwarzschild_geodesics#cite_ref-Schwarzschild_metric_3-0)
 
 # References
 
