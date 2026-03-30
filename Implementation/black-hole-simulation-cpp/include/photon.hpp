@@ -30,6 +30,14 @@ private:
     /** boolean flags */
     bool absorbed = false;
 
+    double rSgn(double dr0)
+    {
+        double sign = sgn(dr0);
+        sign += sign == 0.0;
+        
+        return sign;
+    }
+
 public:
     constexpr static const int maxHistorySize = 200;
 
@@ -98,7 +106,7 @@ public:
         {
             d = 0;
             std::clog << "Warning: Clamped Unphysical state\n";
-            //throw std::invaliwd_argument("Unphysical state");
+            //throw std::invalid_argument("Unphysical state");
         }
 
         double dr0 = sign * sqrt(d),
@@ -184,14 +192,6 @@ public:
         if (path.size() >= maxHistorySize) path.pop_front();
 
         return state;
-    }
-
-    double rSgn(double dr0)
-    {
-        double sign = sgn(dr0);
-        sign += sign == 0.0;
-        
-        return sign;
     }
 };
 
