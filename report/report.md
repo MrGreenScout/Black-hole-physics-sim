@@ -141,7 +141,7 @@ Dividing everything by $ds^2$, where $s$ is an affine parameter we get:
 
 $\left( 1 - \frac{r_\text{s}}{r} \right) c^{2}(\frac{dt}{ds})^2 - \frac{1}{1 - \frac{r_\text{s}}{r}} (\frac{dr}{ds})^2 - r^{2} (\frac{d\varphi}{ds})^{2} = 0$
 
-By analysing the geometry of the Schwartzfield metric we find two conserved quantities.
+By analyzing the geometry of the Schwartzchild metric we find two conserved quantities.
 
 * $L$ is the angular momentum of the photon $L=r^2 \frac{d\varphi}{ds}$
 
