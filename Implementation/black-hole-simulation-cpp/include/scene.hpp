@@ -13,7 +13,7 @@
 class Scene2
 {
 public:
-    constexpr static const size_t MAX_PHOTONS = 20;
+    constexpr static const size_t MAX_PHOTONS = 1000;
 
     Camera2 camera;
     BlackHole blackHole;
@@ -57,7 +57,7 @@ public:
             for (size_t i = historyc - 1; i > 0; i--)
             {
                 // Create fading color
-                int alpha = int(255.999 * i / Photon2::maxHistorySize);
+                int alpha = int(255.999 * i / Photon2::MAX_HISTORY_SIZE);
                 SDL_SetRenderDrawColor(renderer, alpha, alpha, alpha, 255);
 
                 auto a = this->camera.toScreenSpaceCoordinate(photon.path[i]),

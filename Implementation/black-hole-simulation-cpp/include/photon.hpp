@@ -14,8 +14,8 @@
 class Photon2
 {
 private:
-    constexpr static double H = 0.01;
-    constexpr static double ESCAPE_R = 50;
+    constexpr static double H = 0.1;
+    constexpr static double ESCAPE_R = 37;
 
     /** Polar coordinates */
     double phi, r;
@@ -26,11 +26,12 @@ private:
     double rs;
 
     /** Conserved quantities */
-    double L, E;
+    double L, E, b;
 
     /** boolean flags */
     bool absorbed = false,
-          escaped = false;
+          escaped = false,
+       hasEntered = false;
 
     double rSgn(double dr0)
     {
@@ -41,7 +42,7 @@ private:
     }
 
 public:
-    constexpr static int MAX_HISTORY_SIZE = 1000;
+    constexpr static int MAX_HISTORY_SIZE = 100;
 
     /** The path of the photon */
     std::deque<Vector3> path;
@@ -74,17 +75,27 @@ public:
 
         L = angularMomentum(r, dphi);
         E = sqrt((dr * dr) + ((1 - (rs / r)) * L * L / (r * r)));
+        b = L / E;
     }
 
+    bool isAbsorbed() { return absorbed; }
+    
+    bool isEscaped() { return escaped; }
+
     static double angularMomentum(double r, double dphi) { return r * r * dphi; }
+
     static double energy(double rs, double r, double dr, double dphi) 
     { 
         return sqrt((dr * dr) + ((1 - (rs / r)) * angularMomentum(r, dphi) * angularMomentum(r, dphi) / (r * r)));
     }
+    /*
     static double impactB(double rs, double r, double dr, double dphi)
     {
         return angularMomentum(r, dphi) / energy(rs, r, dr, dphi);
     }
+    */
+
+    double impactB() const { return b; } 
 
     double properRadius(double r)
     {
@@ -191,13 +202,19 @@ public:
             absorbed = true;
             return {};
         }
-
-        if (state.x() >= ESCAPE_R) // If escaped the black hole
+        #ifdef EVALUATING
+        if (state.x() >= ESCAPE_R and hasEntered) // If escaped the black hole
         {
             std::cout << "escaped\n";
             escaped = true;
             return {};
         }
+
+        if (state.x() < ESCAPE_R)
+        {
+            hasEntered = true;
+        }
+        #endif
 
         // Update current position and velocity
         Vector3 dstate = f(state.x(), state.y(), drSign);

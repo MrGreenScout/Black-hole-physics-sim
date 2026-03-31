@@ -1,3 +1,5 @@
+//#define EVALUATING
+
 #include <iostream>
 #include <SDL2/SDL_mouse.h>
 
@@ -25,6 +27,9 @@ struct ProgramState
 };
 
 static ProgramState state;
+
+static int expectedEscaped = 0,
+          expectedAbsorbed = 0; 
 
 void mainLoop()
 {
@@ -57,6 +62,37 @@ void mainLoop()
 
     state.scene->drawScene(state.renderer);
 
+    #ifdef EVALUATING
+    int escapedc = 0, absorbedc = 0, undecided = 0;
+
+    bool complete = true;
+    for (auto &photon : state.scene->photons)
+    {
+        if (photon.isEscaped() == false and photon.isAbsorbed() == false)
+        {
+            complete = false;
+            undecided++;
+        }
+
+        if (photon.isEscaped()) escapedc++;
+        if (photon.isAbsorbed()) absorbedc++;
+    }
+
+    if (complete || state.running == false) 
+    {
+        std::clog << "\nEvaluation Result: " << escapedc << " escaped, " << absorbedc << " absorbed\n";
+        std::clog << "Expected   Result: " << expectedEscaped << " escaped, " << expectedAbsorbed << " absorbed\n";
+        if (undecided != 0)
+        {
+            std::clog << "DNF: " << undecided << "\n\n";
+        } 
+        else 
+        {
+            std:: clog << "\n";
+        }
+    }
+    #endif
+
     state.userInterface->updateUI();
     Window::updateRenderer(state.renderer);
 }
@@ -74,6 +110,31 @@ int main(int argc, char const *argv[])
     Window::createWindow(state.window, state.renderer, SCREEN_WIDTH, SCREEN_HEIGHT, "Black hole simulation 2D");
 
     state.userInterface = new UserInterface(state.renderer, state.scene);
+
+    #ifdef EVALUATING
+    
+    int x = -100, startY = 20;
+    for (size_t i = 0; i < 1000; i++)
+    {
+        auto pos = Vector3(x, startY - 2.0 * startY / 999.0 * (double) i, 0);
+        auto dir = Vector3(1, 0, 0);
+
+        state.scene->addPhoton(pos, dir);
+        
+        double b = std::abs(pos.y());
+        double bCrit = state.scene->blackHole.bCrit;
+
+        std::clog << "b = " << b << ", abs(y) = " << std::abs(pos.y()) << "\n";
+
+        if (b > bCrit) 
+            expectedEscaped++;
+        else
+            expectedAbsorbed++;
+    }
+
+    std::clog << "Esc: " << expectedEscaped << " abso: " << expectedAbsorbed << "\n";
+    
+    #endif
 
     #ifdef __EMSCRIPTEN__
 
