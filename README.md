@@ -1,6 +1,6 @@
 # Black-hole-Physics-Sim
 
-![Bendning space time 1](./report/img/bendning-space-1.png)
+![Bendning space time 1](./report/img/thumbnail.png)
 
 This is the final project in the course DD1354 models and simulation KTH, the Royal Institute of Technology. This project models a Schwartzchild black hole and the geodesic orbits of photons in close proximity to it.
 
@@ -16,7 +16,7 @@ I reserve myself for bugs in the web build, I have tested it on Ubuntu Linux wit
 3. Run the command ```bash run.sh``` in the terminal
 4. The program window should open
 
-#### Prerequisits
+#### Prerequisites
 - bash is installed
 - SDL2 is installed
 - g++ is installed
@@ -25,6 +25,12 @@ I reserve myself for bugs in the web build, I have tested it on Ubuntu Linux wit
 This has been built on Ubuntu Linux, I believe it should work quite flawlessly on MacOS but some difficulties may arise on Windows.
 
 ## Blog
+
+### 2026-03-31: Post 9 - Created a evaluation environment and Finalized report
+
+This is probably the final blog post for this project. I am done writing my report and the last change I made to the program was adding a test for evaluating the accuracy of the project. This can be tested by uncommenting ```#define EVALUATING``` in ```/src/main.cpp```. Though a rather limited evaluation, since it only tests a specific part of the simulation, the results should suggest a program that is rather accurate. The results of the test may be found in the [report](report/build/report.pdf)
+
+P.s. I have still not updated the web build. I will probably fix that but I can't promise anything.
 
 ### 2026-03-19: Post 8 - Updated visualization and another coordinate system bug
 
