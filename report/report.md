@@ -267,6 +267,8 @@ The aim of the project was to accurately visualize the bending of light near a b
 
 ![User-spawned photons close to the black hole](./img/photons-close.png)
 
+\pagebreak
+
 ## Evaluation
 
 The program was tested at the step sizes of $h \in [10, 1, 0.1, 0.01]$. [Appendix C](#appendix-c-evaluation) displays images from the test at $h = 0.1$
