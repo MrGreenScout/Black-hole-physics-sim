@@ -6,19 +6,43 @@ author: "David Lindkvist"
 bibliography: "bibliography.bib"
 link-citations: true
 urlcolor: "blue"
-csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/harvard-anglia-ruskin-university.csl"
+numbersections: false
+documentclass: article
+csl: "https://raw.githubusercontent.com/citation-style-language/styles/refs/heads/master/ieee.csl"
+header-includes:
+  - \renewcommand{\contentsname}{Table of contents}
 ---
 
 ![The final program](./img/thumbnail.png)
 
 \pagebreak
 
+\section*{Preface}
+
+This project is so simple on the surface yet below it models very modern physics. To experience this program yourself you may use the following links:
+
+- Github repository: 
+
+  [https://github.com/MrGreenScout/Black-hole-physics-sim](https://github.com/MrGreenScout/Black-hole-physics-sim)
+
+- Online simulation: 
+
+  [https://mrgreenscout.github.io/Black-hole-physics-sim/](https://mrgreenscout.github.io/Black-hole-physics-sim/) 
+  
+  (disclaimer: may not be up to date with the native version on github)
+
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
+
 # Introduction
 Black holes are a type of exotic celestial object, with the key feature being their extreme mass, so massive not even light can escape its pull. This makes for a very interesting subject, since as we know, light has no mass, so how does something massive "bend" the path of the light? Quite literally of course, bending space itself.
   
-The aim of this project is to visualize this bending of space-time close to a Schwartzchild black hole by providing the user with the tools to spawn in photons with a specified position and direction. Since the warping of space-time is a concept not often thought about in everyday life it is often quite difficult to build up a intuitive understanding of it. Through experimentation with this program intuition may be built. For example, this program will build the understanding that light behaves differently to mass-particles, even though they may look similar at first glance.
+The aim of this project is to visualize this bending of space-time close to a Schwartzchild black hole by providing the user with the tools to spawn in photons with a specified position and direction. Since the warping of space-time is a concept not often thought about in everyday life it is often quite difficult to build up an intuitive understanding of it. Through experimentation with this program intuition may be built. For example, this program will build the understanding that light behaves differently to mass-particles, even though they may look similar at first glance.
 
-To evaluate this programs accuracy compared to the underlying theory the report will test some simple cases. The primary case will test the how accurate the stepping function of the simulation is, by comparing the theoretical answer to if a photon should be absorbed, orbit or escape the black hole, and the outcome of the simulation for different initial values.
+To evaluate this program's accuracy compared to the underlying theory the report will perform a quantitative evaluation. The evaluation will test the accuracy of the stepping function of the simulation. This will be done by comparing the theoretical answer to if a photon should be absorbed, orbit or escape the black hole, and the outcome of the simulation for different initial values.
 
 ## Previous research
 
@@ -99,7 +123,7 @@ Modern black hole simulations are used to produce data which can be compared wit
 
   Another simplification can be made, since the model describes a spherically symmetric mass, the gravity is the same in every direction. 
 
-  Furthermore, a particle that is only influenced by one force, such as gravity, move in one 2D plane. Therefore, the colatitude can be thought of as $\theta = \pi / 2$.
+  Furthermore, a particle that is only influenced by one force, such as gravity, move in a 2D plane. Therefore, the colatitude can be thought of as $\theta = \pi / 2$.
   
   Then we can simplify the Schwartzchild solution:
 
@@ -202,7 +226,7 @@ The physics was modelled using the built-in math library, no external physics li
 
 ## Evaluating the simulation
 
-To evaluate the model a quantitative method was chosen. 1000 photons are spawned evenly spaced out in the y direction with a set x position to the left of the black hole, and the same velocity going the right. For each photon the initial impact parameter is calculated from the angular momentum and energy of the photon. Two particular quantities are interesting for evaluating the model, that is the photon sphere radius and the critical impact parameter. As stated by @Sneppen2021 the photon sphere is the radius at which a photon may orbit the black hole, a lower orbit results in a collision with the black hole and a higher orbit results in a escape trajectory. The photon sphere has a value of $\frac{3}{2}R_s$ where $R_s$ is the Schwartzchild radius. The critical impact parameter $b_{crit}$ is the impact parameter distance within which a photon is captured, and outside it results in an escape trajectory.
+To evaluate the model a quantitative method was chosen. 1000 photons are spawned evenly spaced out in the y direction with a set x position to the left of the black hole, and the same velocity going the right. For each photon the initial impact parameter is calculated from the angular momentum and energy of the photon. Two particular quantities are interesting for evaluating the model, that is the photon sphere radius and the critical impact parameter. As stated in [@Sneppen2021] the photon sphere is the radius at which a photon may orbit the black hole, a lower orbit results in a collision with the black hole and a higher orbit results in a escape trajectory. The photon sphere has a value of $r_{ph}=\frac{3}{2}R_s$ where $R_s$ is the Schwartzchild radius. The critical impact parameter $b_{crit}$ is the impact parameter distance within which a photon is captured, and outside it results in an escape trajectory.
 
 \pagebreak
 
@@ -212,7 +236,26 @@ For visualization the photon sphere is interesting, since it clearly displays th
 
 \pagebreak
 
-For each photon the impact parameter $b$ is calculated from the initial conditions, $b < b_{crit}$ will result in a captured and eventually absorbed photon otherwise it will escape, or eternally orbit. For each photon the expected outcome, absorbed or not absorbed is logged at initiation. After a set time, after which all meaningful physical events should have happened, all photons are checked for if they are absorbed or not and that value is compared with the expected outcome. This will provide a decent picture of how accurate the simulation is.
+For each photon the impact parameter $b$ is calculated from the initial conditions.
+
+$b < b_{crit}$ will result in a captured and eventually absorbed photon.
+
+$b > b_{crit}$ will result in an escape trajectory.
+
+(The edge case $b = b_{crit}$ has been accounted for by logging all photons that did not finish within a certain time frame determined per individual situation by the tester)
+
+For each photon the expected outcome, absorbed or escaped is logged at initiation. As the photons complete their simulation, either escaping or getting absorbed, their final outcomes are logged. After all photons have finished, the expected results are compared to the simulated results.
+
+### Initial values
+
+All values are in natural units.
+
+* $x = -100$
+* $y \in [-20, 20]$
+* $dx = 1$
+* $dy = 0$
+
+Since the impact parameter is defined as the perpendicular distance from the black hole if the photon traveled in flat space, the space at which the impact parameter can be accurately sampled at should be close to flat. For this simulation the space at 100 units from the black hole is deemed flat enough. Since for this setup $b \approx |y|$ for each photon, that value will be used since that is the $b$ expected for a photon coming in from infinitely away.
 
 # Results
 
@@ -220,7 +263,25 @@ The aim of the project was to accurately visualize the bending of light near a b
 
 ![User-spawned photons close to the black hole](./img/photons-close.png)
 
+## Evaluation
 
+The program was tested at the step sizes of $h \in [10, 1, 0.1, 0.01]$. [Appendix C](#appendix-c-evaluation) displays images from the test at $h = 0.1$
+
+### Expected results
+
+|  Expected outcome  |  Photons  |
+| :---------------- | :-------: |
+|      Escaped     |    740  |
+|     Absorbed     |    260  |
+
+### Actual results at different step lengths
+
+| h | Simulated escaped | Simulated absorbed |
+| :-: | :----------------: | :-----------------: |
+|  10 |  770 |  230 |
+|  1 |  740 |  260 |
+|  0.1 |  740 |  260 |
+|  0.01 |  740 |  260 |
 
 # Discussion
 
@@ -231,6 +292,12 @@ After the initial idea had been developed the specification process was mainly f
 ### Challenges
 
 The aforementioned in/out-falling check proved a conundrum to structure. The unphysical state that needed to be controlled in this solution appeared as a negative sign under a square-root. This signaled that a photon should have changed from in- to out-falling, meaning the sign of $\frac{dr}{ds}$ should have changed. This solution needed the sign to be changed manually when $\frac{dr}{ds} = 0$. Detecting exactly when $\frac{dr}{ds}$ was zero was impossible but detecting when the previously defined $\Delta(r)<0$ was much more simple, but choosing when to do this check was difficult. The final solution chose to accept the unphysical state of $\Delta(r)$ being negative by instead of throwing an error clamping it to zero. This means that the Runge-Kutta approximation results in an unphysical state but by checking $\Delta(r)<0$ in the main stepping loop any unphysical state is accounted for before the state of the photon is confirmed.
+
+## Evaluation
+
+The results show that the program accurately simulates photons in regards to if they escape the black hole or get absorbed, suggesting the stepping is accurate. The results also show that a step size of $h = 10$ yields slightly inaccurate results, but an $h \leq 1$ passes the evaluation with a perfect score.
+
+Since the evaluation method does not test all aspects of the simulation it only gives a good suggestion of the accuracy of the program. For example, the evaluation method disregards the accuracy of the photon paths only regarding the final outcome. A photon may escape too early or late, or follow an inaccurate trajectory that still result in the correct boolean outcome, escaped or absorbed.
 
 ## Further development
 
@@ -251,18 +318,25 @@ Due to the schwartzchild metric being geometrically symmetric, the photon always
 
 \pagebreak
 
-# Appendix
+\section*{Appendix}
 
-## Appendix A: Panning
+\subsection*{Appendix A: Panning}
 
 ![pan1](./img/pan1.png)\
 ![pan2](./img/pan2.png)\
 ![pan3](./img/pan3.png)\
 ![pan4](./img/pan4.png)\
 
-## Appendix B: Zooming
+\subsection*{Appendix B: Zooming}
 
 ![zoom1](./img/zoom1.png)\
 ![zoom2](./img/zoom2.png)\
 ![zoom3](./img/zoom3.png)\
 
+\subsection*{Appendix C: Evaluation}
+
+![evaluation1](./img/h-01-evaluation1.png)\
+![evaluation2](./img/h-01-evaluation2.png)\
+![evaluation3](./img/h-01-evaluation3.png)\
+![evaluation4](./img/h-01-evaluation4.png)\
+![evaluation5](./img/h-01-evaluation5.png)\

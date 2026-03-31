@@ -13,7 +13,9 @@ public:
 
     /** The Schwartzchild radius */
     double rs;
+
     double photonSphere;
+    double bCrit;
 
     /** Geometric Mass unitless constant */
     long double massGeo;
@@ -22,5 +24,6 @@ public:
     { 
         rs = 2;
         photonSphere = 1.5 * rs;
+        bCrit = 3.0 * sqrt(3.0);
     }
 };
