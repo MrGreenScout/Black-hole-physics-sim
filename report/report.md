@@ -31,6 +31,10 @@ This project is so simple on the surface yet below it models very modern physics
   
   (disclaimer: may not be up to date with the native version on github)
 
+Enjoy the read,
+
+David Lindkvist, dalindk@kth.se
+
 \pagebreak
 
 \tableofcontents
