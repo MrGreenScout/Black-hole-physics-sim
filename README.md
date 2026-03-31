@@ -4,11 +4,12 @@
 
 This is the final project in the course DD1354 models and simulation KTH, the Royal Institute of Technology. This project models a Schwartzchild black hole and the geodesic orbits of photons in close proximity to it.
 
-## Important files and directories
+## Important links
 
 - Project directory: [Implementation/black-hole-simulation-cpp](Implementation/black-hole-simulation-cpp)
 - Project specification: [report/build/project_specification.pdf](report/build/project_specification.pdf)
 - Project report: [report/build/report.pdf](report/build/project_specification.pdf)
+- Project blog: [blog](#blog)
 
 ## How to run
 ### Web build
