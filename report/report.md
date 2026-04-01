@@ -76,7 +76,7 @@ Modern black hole simulations are used to produce data which can be compared wit
 
 ### Runge-Kutta 4[^1]
 
-  A prerequisite for programmatically bending light due to gravity is a numerical method that can be used to predict future position depending on current position and velocity. The method used in this project is the explicit Runge-Kutta 4 method, a fourth-order method that solves an equation of the form $\frac{dy}{dt}=f(t,y)$, $y(t_0)=y_0$ where $y$ is an unknown vector-valued function of a independet variable $t$.
+  A prerequisite for programmatically bending light due to gravity is a numerical method that can be used to predict future position depending on current position and velocity. The method used in this project is the explicit Runge-Kutta 4 method, a fourth-order method that solves an equation of the form $\frac{dy}{dt}=f(t,y)$, $y(t_0)=y_0$ where $y$ is an unknown vector-valued function of a independent variable $t$.
 
   $y_{n+1}=y_n+\frac{h}{6}(k_1+2k_2+2k_3+k_4)$
 
