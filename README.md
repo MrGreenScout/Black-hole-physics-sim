@@ -8,7 +8,7 @@ This is the final project in the course DD1354 models and simulation KTH, the Ro
 
 - Project directory: [Implementation/black-hole-simulation-cpp](Implementation/black-hole-simulation-cpp)
 - Project specification: [report/build/project_specification.pdf](report/build/project_specification.pdf)
-- Project report: [report/build/report.pdf](report/build/project_specification.pdf)
+- Project report: [report/build/report.pdf](report/build/report.pdf)
 - Project blog: [blog](#blog)
 
 ## How to run
