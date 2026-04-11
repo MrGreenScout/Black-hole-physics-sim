@@ -112,13 +112,21 @@ Modern black hole simulations are used to produce data which can be compared wit
 \left( 1 - \frac{r_\text{s}}{r} \right) c^{2} dt^{2} - \frac{dr^{2}}{1 - \frac{r_\text{s}}{r}} - r^{2} (d\theta^{2} + \sin^{2} \theta \, d\varphi^{2})$
 
   where
+
   * $ds^2$ is the spacetime distance, the distance between two events in both time and space
+
   * $\tau$ is the proper time in seconds (for particles with mass)
+
   * $c$ is the speed of light in m/s
+
   * $t$ is the time coordinate (for $r>r_s$)
+
   * $r$ is the radial coordinate (for $r>r_s$)
+
   * $\theta$ is the colatitude in radians
+
   * $\phi$ is the longitude in radians
+
   * $r_s$ is the Schwartzchild radius in meters $r_s=\frac{2GM}{c^2}$
   
   For something that travels at the speed of light,
