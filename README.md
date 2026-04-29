@@ -1,6 +1,6 @@
 # Black-hole-Physics-Sim
 
-![Bending space time 1](./report/img/demonstration.gif)
+[![Bending space time 1](./report/img/demonstration.gif)](https://mrgreenscout.github.io/Black-hole-physics-sim/)
 
 This is the final project in the course DD1354 models and simulation KTH, the Royal Institute of Technology. This project models a Schwartzchild black hole and the geodesic orbits of photons in close proximity to it.
 
